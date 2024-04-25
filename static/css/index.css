@@ -348,3 +348,71 @@ select {
   z-index: 9999;
   opacity: 0.1
 }
+.panel {
+  /* padding: 0 18px;
+  background-color: rgb(126, 4, 4); */
+  margin-left: 10px;
+  margin-top: 2px;
+  max-height: 0;
+  overflow: hidden;
+  margin-bottom: auto;
+  /* transition: max-height 0.1s ease-out; */
+}
+
+table {
+  margin: 0 auto;
+  border-spacing: 0; /* Spacing between table cells */
+}
+
+/* Style table header (first row) */
+th {
+  padding: 10px;
+  color: white;
+  text-align: center;
+  /* background-color: #f2f2f2; */
+}
+
+/* Style table data cells (country names) */
+td {
+  /* border: 1px solid #dddddd; */
+  text-align: left;
+  cursor: pointer;
+  /* padding: 8px; */
+  background: none;
+  font-size: 14px;
+  padding: 0.3em 1em;
+  /* border-radius: 4px; */
+  color: #ffffff;
+  box-shadow: 1px 1px 5px #5b5b5b, -1px -1px 5px #000, inset 1px 1px 5px #5b5b5b, inset -1px -1px 5px #000;
+  transition: all 0.1s;
+  margin-left: 10px;
+  width: 33%;
+  text-align: center;
+  
+}
+
+.tutorial-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Highlight active tutorial step */
+.active-step {
+  background-color: yellow;
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 1000;
+}

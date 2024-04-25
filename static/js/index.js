@@ -39,6 +39,7 @@ var selectedLayer = "Layer0";
 var lastLayer = "Layer0";
 let displayImageList2 = [];
 var originalGenImage
+let canvasList = [];
 function addBackroundLayer() {
 	createLayer("Layer 0");
 }
@@ -101,317 +102,58 @@ function createRegenParams(panel) {
 	const container = document.createElement('div');
 	container.className = 'box';
 	container.style = 'display: flex; flex-direction: column;';
-	const regenSeedContainer = document.createElement('div');
-	regenSeedContainer.id = 'regenSeedContainer' + index;
-	regenSeedContainer.style = 'display: flex; flex-direction: row; align-items: center;';
 
-	const regenGuidanceContainer = document.createElement('div');
-	regenGuidanceContainer.id = 'regenGuidanceContainer' + index;
-	regenGuidanceContainer.style = 'display: flex; flex-direction: row; align-items: center;';
-	const regenStrengthContainer = document.createElement('div');
-	regenStrengthContainer.id = 'regenStrengthContainer' + index;
-	regenStrengthContainer.style = 'display: flex; flex-direction: row; align-items: center;';
-	const radiusContainer = document.createElement('div');
-	radiusContainer.id = 'radiusContainer' + index;
-	radiusContainer.style = 'display: flex; flex-direction: row; align-items: center;';
-	const regenPromptContainer = document.createElement('div');
-	regenPromptContainer.id = 'regenPromptContainer' + index;
-	regenPromptContainer.style = 'display: flex; flex-direction: row; align-items: center;';
-	const maskContainer = document.createElement('div');
-	maskContainer.id = 'maskContainer' + index;
-	maskContainer.style = 'display: flex; flex-direction: row; align-items: center;';
-
-	rsvalue = 8;
-	// Array of input details
-	const inputDetails = [
-		{ label: 'Regen Prompt', type: 'text', id: 'regenPrompt', placeholder: 'Regen prompt' },
-		{ label: 'Negative Prompt', type: 'text', id: 'negativePrompt', placeholder: 'Negative prompt' },
-		{ label: 'Regen Seed', type: 'number', id: 'regenSeed', value: '-1'},
-		{ label: 'Regen Steps', type: 'number', id: 'regenSteps', value: rsvalue },
-		{ label: 'Guidance Scale', type: 'range', id: 'regenGuidanceScale', min: '0', max: '10', step: '0.01', value: '6.0' },
-		{ label: '', type: 'number', id: 'regenGuidanceValue', min: '0', max: '10', step: '0.01', value: '6.0' },
-		{ label: 'Brush Hardness', type: 'range', id: 'regenStrengthScale', min: '0', max: '100.0', step: '0.01', value: '50' },
-		{ label: '', type: 'number', id: 'regenStrengthValue', step: '0.01', min: '0', max: '100.0', value: '50' },
-		{ label: 'Brush Size', type: 'range', id: 'radiusScale', min: '0', max: '300', step: '1', value: '64' },
-		{ label: '', type: 'number', id: 'radiusValue', step: '1', min: '0', max: '150', value: '64' },
-		{ label: 'Use Custom Mask', type: 'checkbox', id: 'useCostumeMask' },
-		{ label: 'Regen Use Attention', type: 'checkbox', id: 'regenUseAttention' }
-	];
-
-	// Iterate through inputDetails and create corresponding HTML elements
-	// Iterate through inputDetails and create corresponding HTML elements
-	inputDetails.forEach(({ label, type, id, min, max, step, value, placeholder }) => {
-		const inputContainer = document.createElement('div');
-		// inputContainer.className = 'box';
-
-		// Set display to flex with row direction
-		inputContainer.style = 'display: flex; flex-direction: row; align-items: center;';
-
-		const inputLabel = document.createElement('label');
-		inputLabel.setAttribute('for', `${id}${index}`);
-		// Check if the label is for "Negative Prompt"
-		if (label === 'Negative Prompt') {
-			const icon = document.createElement('i');
-			icon.classList.add('fa-regular', 'fa-message-minus', 'fa-lg');
-			icon.style = 'margin-right: 5px;';
-			inputLabel.appendChild(icon);
-			inputLabel.appendChild(document.createTextNode(' '));
-		}
-		else if (label === 'Regen Prompt') {
-			const icon = document.createElement('i');
-			icon.classList.add('fa-regular', 'fa-message-plus', 'fa-lg');
-			icon.style = 'margin-right: 5px;';
-			inputLabel.appendChild(icon);
-			inputLabel.appendChild(document.createTextNode(' '));
-		}
-		else if (label === 'Regen Seed') {
-			const icon = document.createElement('i');
-			icon.classList.add('fa-regular', 'fa-seedling', 'fa-lg');
-			icon.style = 'margin-right: 5px;';
-			inputLabel.appendChild(icon);
-			inputLabel.appendChild(document.createTextNode(' '));
-			inputLabel.style.width = "auto";
-		}
-		else if (label === 'Regen Steps') {
-			const icon = document.createElement('i');
-			icon.classList.add('fa-regular', 'fa-rotate-right', 'fa-lg');
-			icon.style = 'margin-right: 5px;';
-			inputLabel.appendChild(icon);
-			inputLabel.appendChild(document.createTextNode(' '));
-			inputLabel.style.float = 'left';
-		}
-		else if (label === 'Guidance Scale') {
-			const icon = document.createElement('i');
-			icon.classList.add('fa-regular', 'fa-scale-unbalanced', 'fa-lg');
-			icon.style = 'margin-right: 5px;';
-			inputLabel.appendChild(icon);
-			inputLabel.appendChild(document.createTextNode(' '));
-		}
-		else if (label === 'Brush Hardness') {
-			const icon = document.createElement('i');
-			icon.classList.add('fa-regular', 'fa-weight-scale', 'fa-lg');
-			icon.style = 'margin-right: 5px;';
-			inputLabel.appendChild(icon);
-			inputLabel.appendChild(document.createTextNode(' '));
-		}
-		else if (label === 'Brush Size') {
-			const icon = document.createElement('i');
-			icon.classList.add('fa-solid', 'fa-circle', 'fa-lg');
-			icon.style = 'margin-right: 5px;';
-			inputLabel.appendChild(icon);
-			inputLabel.appendChild(document.createTextNode(' '));
-		}
-		else if (label === 'Use Custom Mask') {
-			const icon = document.createElement('i');
-			icon.classList.add('fa-regular', 'fa-mask', 'fa-lg');
-			icon.style = 'margin-right: 5px;';
-			inputLabel.appendChild(icon);
-			inputLabel.appendChild(document.createTextNode(' '));
-		}
-
-// Set the label text
-inputLabel.appendChild(document.createTextNode(label));
-
-		const inputElement = document.createElement(type === 'checkbox' ? 'input' : 'input');
-		inputElement.type = type;
-		inputElement.id = `${id}${index}`;
-		if (id == 'regenUseAttention') {
-			inputContainer.style.display = 'none';
-		}
-		if (type !== 'checkbox') {
-			// if (id !=="regenSeed"){
-			inputElement.min = min;
-			inputElement.max = max;
-			inputElement.step = step;
-			inputElement.placeholder = placeholder;
-			// }
-			if (type != 'text') {
-				inputElement.value = value;
-			}
-			
-			if (type === 'range') {
-				inputElement.oninput = function () {
-					updateSliderValue(this.value, this.id);
-				};
-			} else if (type === 'number') {
-				inputElement.oninput = function () {
-					updateSlider(this.value, `${id}${index}`);
-				};
-			}
-			if (id == "radiusScale") {
-				inputElement.oninput = function () {
-					updateSliderValue(this.value, this.id);
-					circle.style.width = this.value + "px";
-					circle.style.height = this.value + "px";
-					circle_slider = updateCircleSlider(this.value);
-					circle_slider.style.width = this.value + "px";
-					circle_slider.style.height =  this.value + "px";
-					clearTimeout(timeout);
-					timeout = setTimeout(function () {
-					circle_slider.style.display = "none";
-				}, 500);
-				};
-				// inputElement.onblur = function () {
-				// // Hide the slider when the input is done (on blur)
-				// circle_slider = document.querySelector(".circle_slider");
-				// circle_slider.style.display = 'none';
-				// };
-
-			}
-		}
-		else {
-			if (id === 'regenUseAttention') {
-				inputElement.style.visibility = 'hidden';
-			inputLabel.style.visibility = 'hidden';
-			}
-			else{
-				inputElement.onchange = function () {
-					id = inputElement.id.replace("useCostumeMask", "");
-					if (inputElement.checked) {
-						inputElement.value = "true";
-						addCanvas(id);
-					}
-					else {
-						inputElement.value = "false";
-						removeCanvas(id);
-						// canvas.removeEventListener('mouseenter', handleMouseEnter);
-						// canvas.removeEventListener('mouseleave', handleMouseLeave);
-
-	
-					}
-				};
-			}
-			
-		}
-		if (id === 'negativePrompt' || id === 'regenPrompt') {
-			inputElement.style = 'float: left';
-		}
-		// Append the label and input to the inputContainer
-		inputContainer.appendChild(inputLabel);
-		inputContainer.appendChild(inputElement);
-		// Append the inputContainer to the main container
-		if (id === 'regenSeed' || id === 'regenPrompt') {
-			// Append Regen Seed and Number of Regen Steps to the special container
-			if (id === 'regenSeed') {
-				inputElement.style = 'padding-right: 2px; padding-left: 1em;';
-			}
-			if (id === 'regenPrompt') {
-			inputContainer.style = 'margin-right: auto; float: left;';
-			}
-			else{
-				reuseButton = createLayersButton("reuseButton", index, reuseSeed, "regenSeed", "fa fa-recycle");
-				reuseButton.style.marginRight = "0.7em";
-				// reuseButton = createReuseButton(index)
-				// randomizeButton = createRandomizeButton(index)
-				randomizeButton = createLayersButton("Randomize", index, randomizeSeedRegen, "regenSeed", "fa-duotone fa-dice fa-lg");
-				// reuseSeed = inputContainer.children[1];
-
-				inputContainer.appendChild(reuseButton);
-				inputContainer.appendChild(randomizeButton);
-				// inputContainer.insertBefore(reuseButton, inputContainer.children[1]);
-				// inputContainer.insertBefore(randomizeButton, inputContainer.children[1])
-				// inputContainer.children[3].style.width = "8.6em";
-				inputContainer.style = "margin-left:auto; float:right; padding:0em";
-				
-			}
-
-			regenSeedContainer.appendChild(inputContainer);
-			// regenSeedContainer.style = "padding-top: 0.5em;"
-		}
-		else if (id === 'regenGuidanceScale' || id === 'regenGuidanceValue') {
-			if (id == "regenGuidanceValue") {
-				inputContainer.removeChild(inputLabel);
-				inputContainer.style = 'padding-left: 15px; margin-left: auto;'
-			}
-			else {
-				inputContainer.style = 'margin-right: auto;'
-			}
-			regenGuidanceContainer.appendChild(inputContainer);
-		}
-		else if (id === 'regenStrengthScale' || id === 'regenStrengthValue') {
-			if (id == "regenStrengthValue") {
-				inputContainer.removeChild(inputLabel);
-				inputContainer.style = 'padding-left: 15px; margin-left: auto;'
-			}
-			else {
-				inputContainer.style = 'margin-right: auto;'
-			}
-			
-			regenStrengthContainer.appendChild(inputContainer);
-		}
-		else if (id === 'radiusScale' || id === 'radiusValue') {
-			if (id == "radiusValue") {
-				inputContainer.removeChild(inputLabel);
-				inputContainer.style = 'padding-left: 15px;margin-left: auto;'
-				// sqaureButton= createLayersButton("squareButton", index, selectMaskShape, "regenSeed", "fa-regular fa-square");
-				// circleButton = createLayersButton("circleButton", index, selectMaskShape, "regenSeed", "fa-regular fa-circle");
-				// // reuseSeed = inputContainer.children[1];
-
-				// inputContainer.appendChild(sqaureButton);
-				// inputContainer.appendChild(circleButton);
-			}
-			else {
-				inputContainer.style = 'margin-right: auto;'
-			}
-			radiusContainer.appendChild(inputContainer);
-			
-		}
-		else if (id === 'regenSteps' || id === 'negativePrompt') {
-			if (id == "negativePrompt") {
-				inputContainer.style = 'margin-right: auto; float: left;';
-			}
-		else if (id == "regenSteps") {
-				inputContainer.style = 'margin-left: auto; float: right; padding = 0em';
-			}
-
-			// regenPromptContainer.style = 'display: flex; flex-direction: row; align-items: center; margin-top: 10px;';
-			regenPromptContainer.appendChild(inputContainer);
-		}
-		else {
-			if (id != "useCostumeMask") {
-				container.appendChild(inputContainer);
-			}
-			else {
-				maskContainer.appendChild(inputContainer);
-			}
-
-		}
-	});
-	// regenPromptContainer.style = "margin-bottom: 0.5em;";
-	// regenGuidanceContainer.style = "margin-top: 0.5em;";
-	regenSeedContainer.firstChild.style.width = "55%";
-	regenPromptContainer.firstChild.style.width = "55%";
-	regenSeedContainer.lastChild.style.width = "45%";
-	regenPromptContainer.lastChild.style.width = "45%";
-
-
-	container.appendChild(regenSeedContainer);
-	container.appendChild(regenPromptContainer);
-	container.appendChild(regenGuidanceContainer);
-	container.appendChild(regenStrengthContainer);
-	container.appendChild(radiusContainer);
-	// container.appendChild(reuseButton);
-	container.appendChild(maskContainer);
+	table = document.getElementById(index +"Table");
+	table.style.display = 'block';
+	container.appendChild(table);
 
 	// Append the main container to the body or another parent element
 	panel.appendChild(container);
 
 }
+
+function hideLayer(panelId) {
+	const layerList = document.getElementById("layerList").children;
+	tempLayerList = Array.from(layerList)
+	newtemplist = layers.slice()
+	button = document.getElementById("hideLayer" + panelId + "Square");
+	if (button.innerHTML === '<i id="eyeIcon" class="fa-regular fa-eye-slash"></i>') {
+		button.innerHTML = '<i id="eyeIcon" class="fa-regular fa-eye"></i>';
+
+	}
+	else {
+		button.innerHTML = '<i id="eyeIcon" class="fa-regular fa-eye-slash"></i>';
+	}
+	for (var i = 0; i < tempLayerList.length; i++) {
+		if (tempLayerList[i].classList == "panel active") {
+			selectedLayer = tempLayerList[i].id;
+			selectLayerSqare = selectedLayer + "Square"
+			lastLayer = newtemplist[Object.keys(newtemplist)[1]].id
+
+			break
+		}
+	}
+	image = document.getElementById(panelId+"Image");
+	
+	if (button.innerHTML === '<i id="eyeIcon" class="fa-regular fa-eye-slash"></i>') {
+		image.style.display = 'none'
+
+	}
+	else {
+		image.style.display = 'block'
+	}
+
+}
+
 function handleLayer0Down() {
 	imagecont = document.getElementById('image-container');
-	originalCanvas = imagecont.querySelector("canvas");
-//             if (originalCanvas != null) {
-//                 clonedCanvas = originalCanvas.cloneNode(true);
-//             if (originalCanvas.getContext) {
-//                 var originalContext = originalCanvas.getContext('2d');
-//                 var clonedContext = clonedCanvas.getContext('2d');
-//                 // Copy the state of the context
-//                 clonedContext.drawImage(originalCanvas, 0, 0);
-// }
-	// }
+	layer1 = document.getElementById("Layer1Image");
+	layer2 = document.getElementById("Layer2Image");
+	layer3 = document.getElementById("Layer3Image");
+	layer1.style.display = 'none'
+	layer2.style.display = 'none'
+	layer3.style.display = 'none'
 
-	imageElement = document.getElementById('image-container-gen-image');
-	imageElement.src = originalGenImage.src;
 }
 function toggleAccordion(sectionId) {
 	var panel = document.getElementById(sectionId);
@@ -424,10 +166,29 @@ function toggleAccordion(sectionId) {
 		} else {
 			panel.style.maxHeight = panel.scrollHeight + "px";
 			acc.classList.add('regenerate-animation');
+			imageContainer = document.getElementById("image-container");
+			if (sectionId == "Layer1"){
+				canvas = document.getElementById("canvas1");}
+			else if (sectionId == "Layer2"){
+				canvas = document.getElementById("canvas2");}
+			else if (sectionId == "Layer3"){
+				canvas = document.getElementById("canvas3");}
+			mask = document.getElementById("mask");
+
+			image = document.getElementById("image-container-gen-image");
+
+			imageContainer.insertBefore(mask, imageContainer.firstChild);
+			mask.src = canvas.src;
+			mask.width = image.width;
+			mask.height = image.height;
+			mask.style.display = 'block';
+			mask.style.position = 'absolute';
+			mask.style.zIndex = '1';
+			mask.style.opacity = "0.5";
+			mask.style.width = image.style.width;
+			mask.style.height = image.style.height;
+			
 		}
-		circle.style.width = document.querySelector("#radiusScale" + panel.id).value + "px";
-		circle.style.height = document.querySelector("#radiusScale" + panel.id).value + "px";
-		// acc.classList.add('regenerate-animation');
 	}
 	const layerList = document.getElementById("layerList").children;
 	tempLayerList = Array.from(layerList)
@@ -437,24 +198,6 @@ function toggleAccordion(sectionId) {
 			selectLayerSqare = selectedLayer + "Square"
 			document.getElementById(selectLayerSqare).classList.add('regenerate-animation');
 			maskCheck = document.getElementById("useCostumeMask" + selectedLayer);
-			
-			if (Object.keys(canvasList).length > 0 )
-			{
-				selectedLayerCanvas = document.getElementById("canvas"+selectedLayer);
-				if (maskCheck.checked) {
-					
-					addCanvas(selectedLayer, toggle = true);
-				}
-				else{
-					console.log("here")
-					// imgContainer = document.getElementById("image-container");
-					// canv = imgContainer.querySelector("canvas");
-					// imgContainer.removeChild(canv);
-
-
-					removeCanvas(selectedLayer, toggle = true);
-				}
-			}
 			break
 		}
 
@@ -473,82 +216,91 @@ function toggleAccordion(sectionId) {
 }
 function handleLayer0Up(imageElement) {
 
-	// If the canvas has a context, clone it as well
 	imagecont = document.getElementById('image-container');
-	imageElement = document.getElementById('image-container-gen-image');
-	imageElement.src = currentImage;
-	// canvas = imagecont.querySelector("canvas");
-	// if (canvas != null) {
-	//     imagecont.removeChild(canvas);
-	//     imagecont.insertBefore(clonedCanvas,imagecont.firstChild);
-	// }
-	// Append the cloned canvas to the container
-
-}
-function reuseSeed(id = "seed")
-{
-// Send the parameters to the WebSocket server
-message = {
-	type: "reuseSeed",
-	id: id
-}
-if (isOpen(socket)) {
-	socket.send(JSON.stringify(message));
-}
-else {
-	console.log("socket not open")
-}
-console.log("reuse seed sent.")
-}
-
-function randomizeSeed(id){
-	seedID = id.replace("Randomize", "");
-	seed = document.getElementById(seedID);
-	seed.value = -1;
-	seed.innerHTML = -1;
-}
-function randomizeSeedRegen(id){
-	// seedID = id.replace("Randomize", "");
-	// seed = document.getElementById(seedID);
-	// seed.value = -1;
-	// seed.innerHTML = -1;
-	message = {
-	type: "randomizeRegenSeed",
-	id: id
-}
-if (isOpen(socket)) {
-	socket.send(JSON.stringify(message));
-}
-else {
-	console.log("socket not open")
-}
-console.log("randomize seed sent.")
+	layer1 = document.getElementById("Layer1Image");
+	layer2 = document.getElementById("Layer2Image");
+	layer3 = document.getElementById("Layer3Image");
+	layer1.style.display = 'block'
+	layer2.style.display = 'block'
+	layer3.style.display = 'block'
 
 }
 
-function createLayersButton(name, id, fToRun, inputTarget, iconName) {
-	// Create button element
-var button = document.createElement("button");
-button.id = name+id;
-button.className = "button-c";
-button.style.float = "right";
-button.style.marginRight = "0.1em";
-button.style.width = "2.5em";
-button.style.height = "2.5em";
-button.style.textAlign = "center";
-button.style.padding = "0px";
-button.style.marginLeft = "0.5em";
-button.onclick = function () {fToRun(inputTarget + id)};
 
-// Create icon element
-var icon = document.createElement("i");
-icon.className = iconName;
 
-// Append icon to button
-button.appendChild(icon);
-return button
+
+function setupScrollOnImage(canvas, layerid) {
+	if (!canvas) {
+		console.error('Image element is null or undefined.');
+		return;
+	}
+
+	let seed = document.getElementById("regenSeed"+layerid);
+
+
+	handleWheelListener = event => handleWheel(event, seed, layerid);
+
+	document.addEventListener('wheel',handleWheelListener, { passive: false });
+	// Add the mouse enter/leave event listeners to the image element
+	canvas.addEventListener('mouseenter', handleMouseEnter);
+	canvas.addEventListener('mouseleave', handleMouseLeave);
 }
+let handleWheelListener;
+function handleMouseEnter() {
+	isOverImage = true;
+	// container = document.getElementById("image-container-2");
+	document.body.style.overflow = 'hidden';
+	document.addEventListener('wheel', handleWheelListener, { passive: false });
+}
+function handleMouseLeave() {
+isOverImage = false;
 
+// container = document.getElementById("image-container-2");
+document.body.style.overflow = 'auto';
+document.removeEventListener('wheel', handleWheelListener);
+}
+let isOverImage = false;
+let wheelTimeout = null;
+cellList = []
+function handleWheel(event) {
+	
+
+
+    if (isOverImage) {
+        event.preventDefault();
+		
+		clearTimeout(wheelTimeout);
+		const updateSeedValue = () => {
+		const layerList = document.getElementById("layerList").children;
+		tempLayerList = Array.from(layerList)
+		for (var i = 0; i < tempLayerList.length; i++) {
+			if (tempLayerList[i].classList == "panel active") {
+				selectedLayer = tempLayerList[i].id;
+				break
+			}
+		}
+		seed = document.getElementById(selectedLayer + "Seed")
+            var currentValue = parseInt(seed.value, 10);
+
+            var delta = event.deltaY > 0 ? 1 : -1;
+            var newValue = currentValue + delta;
+			
+            if (newValue > 4) {
+                seed.value = 1;
+            } else if (newValue < 1) {
+				seed.value = 4;
+			} else {
+                seed.value = newValue;
+            }
+
+            var inputEvent = new Event('input');
+            seed.dispatchEvent(inputEvent);}
+			wheelTimeout = setTimeout(updateSeedValue, 100); 
+			cell = cellList[selectedLayer];
+			if (cell == null) return
+			editImage(cell);
+    }
+}
 
 function updateLayerList() {
 	const layerList = document.getElementById('layerList');
@@ -559,32 +311,25 @@ function updateLayerList() {
 	});
 }
 function createLayer(name = "") {
-	
-	
-	const layerSquare = document.createElement("button");
 
+	const layerSquare = document.createElement("button");
 	const imageContainer = document.getElementById("image-container");
-	// canvas = imageContainer.querySelector("canvas");
-	// if (canvas != null) {
-	//     canvas.style.display = 'none';
-	// }
 	
 
 	layerSquare.className = "accordion";
 	layerSquare.className = "button-d"
-	// layerSquare.textContent = "Section 1";
-	// Create panel div
 	const panelDiv = document.createElement("div");
 	panelDiv.className = "panel";
 
-	
-	// Append paragraph to panel div
 
 
 	alllayersCount += 1;
+	if (alllayersCount > 3) {
+		alert ("In this demo, we only support up to 3 layers.")
+		return}
+	
 	if (alllayersCount == 0) {
-		addBackroundLayer()
-		// layer0Square = document.getElementById("Layer0Square");
+		addBackroundLayer();
 
 	}
 
@@ -594,10 +339,7 @@ function createLayer(name = "") {
 
 	const layerNumber = document.createElement('div');
 	layerNumber.className = 'layerNumber';
-	// layers.length
-	// layerNumber.innerText = ` ${layers.length + 1}`;
 
-	// const layerText = document.createElement('div');
 	if (layers.length == 0) {
 		layerno = 0;
 	}
@@ -620,7 +362,6 @@ function createLayer(name = "") {
 	layerSquare.style.width = '-webkit-fill-available';
 	layerSquare.style.width = '-moz-available';
 	layerSquare.style.height = '60px';
-	// layerSquare.style.marginBottom = '5px';
 	layerSquare.style.marginTop = '7px';
 	layerSquare.style.transition = 'all 0.1s ease';
 	layerSquare.style.alignItems = 'center';
@@ -628,10 +369,10 @@ function createLayer(name = "") {
 	layerThumbnail = createThumbnail(panelDiv.id, layerno);
 	createDisplayImage(selectedLayer);
 
-
 	const hideButton = createButtonPanel('<i id="eyeIcon" class="fa-regular fa-eye"></i>', 'hideLayer', layerSquare)
-	// hideButton.classList.add('fa-eye');
-	hideButton.style.marginRight = '3px';
+	hideButton.style.marginTop = '12px';
+	hideButton.style.paddingRight = '10px';
+
 	hideButton.onclick = function () {
 		if (hideButton.innerHTML === '<i id="eyeIcon" class="fa-regular fa-eye"></i>') {
 			createDisplayImage(panelDiv.id);
@@ -644,34 +385,26 @@ function createLayer(name = "") {
 	deleteButton.onclick = function () {
 		const indexToDelete = layers.indexOf(layerSquare);
 		deleteLayer(indexToDelete, layerSquare.id);
-		// event.stopPropagation(); // Prevent the layerSquare click event from firing
-		// deleteLayer(currentLayerIndex);
 	};
 
 
 	// layerSquare.appendChild(layerText);
 	wrapper = document.createElement('div');
+	if (layerSquare.id != 'Layer0Square') {
 	wrapper.appendChild(hideButton);
+	}
+	else{
+		layerThumbnail.style.marginLeft = "35px";
+	}
 	wrapper.appendChild(layerThumbnail);
 	wrapper.style.display = 'flex';
 	layerSquare.appendChild(wrapper);
-	// layerSquare.appendChild(hideButton);
-	// layerSquare.appendChild(layerThumbnail);
+	layerNumber.style.marginLeft = '-55px';
 	layerSquare.appendChild(layerNumber);
-	// layerSquare.appendChild(accordion);
 	layerSquare.appendChild(deleteButton);
-	// layerSquare.appendChild(panelDiv);
 	if (layerSquare.id != 'Layer0Square') {
 		createRegenParams(panelDiv);
 	}
-
-	// panelDiv.appendChild(paragraph);
-	// layerSquare.appendChild(button1)
-
-	// layerSquare.onclick = function() {
-	//     selectLayer(currentLayerIndex);
-	//     // toggleAccordion(currentLayerIndex);
-	// };
 	layers.unshift(panelDiv);
 	layers.unshift(layerSquare);
 
@@ -682,20 +415,60 @@ function createLayer(name = "") {
 		buttonElement = document.getElementById("Layer0Square");
 		buttonElement.addEventListener("mousedown", handleLayer0Down);
 		buttonElement.addEventListener("mouseup", handleLayer0Up);
-		// buttonElement.addEventListener("mouseout", handleLayer0Up);
-
 	}
 	if (layers.length > 2){
 		lastLayer = layers[layers.length - 3].id;
 	}
-	
+	inputImage = document.getElementById("image-container-gen-image");
+	imageContainer.addEventListener('mouseenter', handleMouseEnter);
+	imageContainer.addEventListener('mouseleave', handleMouseLeave);
+	handleWheelListener = event => handleWheel(event);
 
+	document.addEventListener('wheel',handleWheelListener, { passive: false });
 }
+function editImage(cell){
+	layerid = cell.id.replace("P", "");
+	cell.classList.add("clickedcell");
+	if (cellList[layerid] != cell){
+		if (cellList[layerid] != null){
+		cellList[layerid].classList.remove("clickedcell");
+		}
+		cell.classList.add("clickedcell");
+	}
+	cellList[layerid] = cell;
+	imageContainer = document.getElementById("image-container");
+	image = document.getElementById(layerid.substring(0, 6) + "Image");
+
+	seed  = document.getElementById(layerid + "Seed").value;
+	imageName = cell.innerText + seed + ".png";
+	if (layerid.startsWith('Layer1')) {
+		
+		offset =200;
+	}	
+	else if (layerid.startsWith('Layer2')) {
+
+		offset = 0;
+		
+	}
+	else if (layerid.startsWith('Layer3')) {
+		offset = 360;
+	}
+	// image = document.createElement('img');
+	orgImage = document.getElementById("image-container-gen-image");
+	image.src = "static/demo/" + imageName;
+	image.style.display = "block";
+	image.style.position = "absolute";
+	mask = document.getElementById("mask");
+	mask.style.display = "none";
+	image.style.top =  orgImage.offsetTop + "px";
+	image.style.left = offset +  orgImage.offsetLeft + "px";
+}
+
 function createButtonPanel(text, id, layerSquare){
 	const deleteButton = document.createElement('div');
 	deleteButton.className = id;
 	deleteButton.innerHTML = text; // Bin icon
-	deleteButton.style.fontSize = '1.5rem';
+	deleteButton.style.fontSize = '1.3rem';
 	deleteButton.cursor = 'pointer';
 	deleteButton.id = id + layerSquare.id;
 

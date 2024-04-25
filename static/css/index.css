@@ -396,3 +396,27 @@ td {
   box-shadow: 1px 1px 5px #5b5b5b, -1px -1px 5px #000, inset 1px 1px 5px #5b5b5b, inset -1px -1px 5px #000;
 
 }
+#democontainer {
+  flex-direction: row;
+}
+@media only screen and (max-width: 768px) {
+  #democontainer {
+    flex-direction: column !important;
+  }
+}
+#edit-containe{
+  width: 50%;
+}
+@media only screen and (max-width: 768px) {
+  #edit-container {
+    width: 100% !important;
+  }
+}
+#demoImageCotainer{
+  width: 50%;
+}
+@media only screen and (max-width: 768px) {
+  #demoImageCotainer {
+    width: 100% !important;
+  }
+}

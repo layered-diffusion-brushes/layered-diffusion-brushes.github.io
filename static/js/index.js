@@ -481,3 +481,23 @@ function createButtonPanel(text, id, layerSquare){
 	return deleteButton
 
 }
+function deleteAllLayers(){
+	canvasList = [];
+	layers = [];
+	alllayersCount = -1;
+	const layerList = document.getElementById('layerList');
+	layerList.innerHTML = '';
+
+	layers.forEach((layer, index) => {
+		layerList.appendChild(layer);
+	});
+
+	layer1 = document.getElementById("Layer1Image");
+	layer2 = document.getElementById("Layer2Image");
+	layer3 = document.getElementById("Layer3Image");
+	layer1.src = "";
+	layer2.src = "";
+	layer3.src = "";
+	layer1.style.display = 'none';
+	layer2.style.display = 'none';
+	layer3.style.display = 'none';}

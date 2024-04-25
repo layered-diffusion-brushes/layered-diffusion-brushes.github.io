@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <meta name="description" content="Image Editor">
+  <meta property="og:title" content="Layered Diffusion Brushes"/>
+  <meta property="og:description" content="Layered Diffusion Brushes"/>
+  <meta property="og:url" content="https://layered-diffusion-brushes.github.io/"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
   <meta property="og:image" content="static/image/your_banner_image.png" />
   <meta property="og:image:width" content="1200"/>
@@ -284,9 +284,9 @@
       <h2 class="title is-3 has-text-centered">Try it yourself</h2>
       <div class="container has-text-justified">
 
-      <div class="box" style="display: flex; flex-direction: row; width: 100%;">
+      <div class="box" id="democontainer" style="display: flex; flex-direction: row; width: 100%;">
         <div class="box" style="display: flex; flex-direction: column; width: 50%;">
-            <div id="image-container" style="vertical-align: middle; align-self:center; margin-top: 20px;">
+            <div id="image-container" style="vertical-align: middle; align-self:center; margin-top: 20px; position: relative;">
             <img src="static/images/original.png" alt="Photo of Paris in fall" id="image-container-gen-image">
             <img id = "mask", style="display:none">
             <img id = "Layer1Image", style="display:none; position:absolute; left: 200px; top: 0px; "> 
@@ -398,6 +398,8 @@
 
         
     </div>
+
+    
 
 
 </div>

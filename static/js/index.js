@@ -104,6 +104,14 @@ function createRegenParams(panel) {
 	container.style = 'display: flex; flex-direction: column;';
 
 	table = document.getElementById(index +"Table");
+	if (table == null) {
+		if (index == 'Layer1') {
+		table =table1backup;}
+		else if (index == 'Layer2') {
+		table =table2backup;}
+		else if (index == 'Layer3') {
+		table =table3backup;}
+	}
 	table.style.display = 'block';
 	container.appendChild(table);
 
@@ -310,8 +318,13 @@ function updateLayerList() {
 		layerList.appendChild(layer);
 	});
 }
-function deleteLayer(index, layerId) {
-
+function deleteLayer(index, panelId) {
+	layerName = panelId.replace("Square", "");
+	layers.splice(index, 2);
+	layerimage = document.getElementById(layerName+"Image");
+	layerimage.src = "";
+	layerimage.style.display = 'none';
+	updateLayerList();
 
 }
 function createLayer(name = "") {
@@ -420,7 +433,9 @@ function createLayer(name = "") {
 		originalGenImage = document.getElementById("image-container-gen-image");
 		buttonElement = document.getElementById("Layer0Square");
 		buttonElement.addEventListener("mousedown", handleLayer0Down);
+		buttonElement.addEventListener("touchstart", handleLayer0Down);
 		buttonElement.addEventListener("mouseup", handleLayer0Up);
+		buttonElement.addEventListener("touchend", handleLayer0Up);
 	}
 	if (layers.length > 2){
 		lastLayer = layers[layers.length - 3].id;
@@ -465,7 +480,7 @@ function editImage(cell){
 	image.style.display = "block";
 	image.style.position = "absolute";
 	// image.style.height = orgImage.style.height;
-	image.style.height = orgImage.height + "px";
+	image.style.height = "inherit";
 	image.style.maxHeight = "-webkit-fill-available"
 	mask = document.getElementById("mask");
 	mask.style.display = "none";
@@ -491,10 +506,24 @@ function createButtonPanel(text, id, layerSquare){
 	return deleteButton
 
 }
+let table1backup
+let table2backup
+let table3backup
 function deleteAllLayers(){
 	canvasList = [];
 	layers = [];
+	for (cell in cellList){
+		cellList[cell].classList.remove("clickedcell");
+	}
+	cellList = [];
 	alllayersCount = -1;
+	table1 = document.getElementById("Layer1Table");
+	table1backup = table1.cloneNode(true);
+	table2 = document.getElementById("Layer2Table");
+	table2backup = table2.cloneNode(true);
+	table3 = document.getElementById("Layer3Table");
+	table3backup = table3.cloneNode(true);
+
 	const layerList = document.getElementById('layerList');
 	layerList.innerHTML = '';
 

@@ -310,8 +310,13 @@ function updateLayerList() {
 		layerList.appendChild(layer);
 	});
 }
-function createLayer(name = "") {
+function deleteLayer(index, layerId) {
 
+
+}
+function createLayer(name = "") {
+	beforeStarContainer = document.getElementById("beforeStarContainer");
+	beforeStarContainer.style.display = 'none'
 	const layerSquare = document.createElement("button");
 	const imageContainer = document.getElementById("image-container");
 	
@@ -368,6 +373,7 @@ function createLayer(name = "") {
 	layerSquare.id = 'Layer' + layerno + "Square";
 	layerThumbnail = createThumbnail(panelDiv.id, layerno);
 	createDisplayImage(selectedLayer);
+	panelDiv.style.marginBottom = 'auto';
 
 	const hideButton = createButtonPanel('<i id="eyeIcon" class="fa-regular fa-eye"></i>', 'hideLayer', layerSquare)
 	hideButton.style.marginTop = '12px';
@@ -443,7 +449,7 @@ function editImage(cell){
 	imageName = cell.innerText + seed + ".png";
 	if (layerid.startsWith('Layer1')) {
 		
-		offset =200;
+		offset =(100/512)*200;
 	}	
 	else if (layerid.startsWith('Layer2')) {
 
@@ -451,17 +457,21 @@ function editImage(cell){
 		
 	}
 	else if (layerid.startsWith('Layer3')) {
-		offset = 360;
+		offset = (100/512)*360;
 	}
 	// image = document.createElement('img');
 	orgImage = document.getElementById("image-container-gen-image");
 	image.src = "static/demo/" + imageName;
 	image.style.display = "block";
 	image.style.position = "absolute";
+	// image.style.height = orgImage.style.height;
+	image.style.height = orgImage.height + "px";
+	image.style.maxHeight = "-webkit-fill-available"
 	mask = document.getElementById("mask");
 	mask.style.display = "none";
+	// image.style.width ='auto'
 	image.style.top =  orgImage.offsetTop + "px";
-	image.style.left = offset +  orgImage.offsetLeft + "px";
+	image.style.left = offset + "%";
 }
 
 function createButtonPanel(text, id, layerSquare){

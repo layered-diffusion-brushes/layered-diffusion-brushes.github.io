@@ -192,7 +192,7 @@
           </h2> 
         </div>
         <div class="item">
-          <img src="static/images/layer1beach.png" alt="s" width="512px"/>
+          <img src="static/images/layer1boat.png" alt="s" width="512px"/>
           <h2 class="subtitle has-text-centered">
             Layer 1 output - boat
           </h2>
@@ -207,7 +207,7 @@
           </h2>
         </div>
         <div class="item">
-          <img src="static/images/layer2beach.png" alt="s" width="512px"/>
+          <img src="static/images/layer2rocks.png" alt="s" width="512px"/>
           <h2 class="subtitle has-text-centered">
             Layer 2 output - rocks
           </h2>
@@ -257,7 +257,7 @@
   </div>
 </section>
 
-<section class="hero is-small">
+<section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3 has-text-centered">Layer-based image editing</h2>
@@ -296,7 +296,7 @@
           <img src="static/images/tower.png"  id="canvas1" style="display:none">
           <img src="static/images/lake.png"  id="canvas2" style="display:none">
           <img src="static/images/palm.png"  id="canvas3" style="display:none">
-           <p style="text-align: center ;color:white; margin-top: 10px;"> <b></b><i class="fa-duotone fa-square-terminal fa-lg" style="margin-right: 10px;"></i> input prompt:</b> <span style="margin-left: 15px;"> "photo of paris in fall"</span></p>
+           <p style="text-align: center ;color:white; margin-top: 10px;"> <b></b><i class="fa-duotone fa-square-terminal fa-lg" style="margin-right: 3px;"></i> input prompt:</b> <span style="margin-left: 5px;"> "photo of paris in fall"</span></p>
                   
           </div>
         <div class="box" id="edit-container" style="display: flex; flex-direction: column; width: 50%; padding-left:0.3em;">
@@ -348,7 +348,7 @@
                   waterfall
                 </td>
                 <td colspan="1" style="background: none; box-shadow: none; cursor: auto;">
-                  <input type="number" id="Layer2Seed" value="1" style="margin-top: -5px;">
+                  <input type="number" id="Layer2Seed" value="1" style="margin-top: -5px;" onkeyup=editImage();>
                 </td>
               </tr>
             </table>

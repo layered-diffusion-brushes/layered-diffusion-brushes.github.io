@@ -310,6 +310,8 @@ function handleWheel(event) {
     }
 }
 
+
+
 function updateLayerList() {
 	const layerList = document.getElementById('layerList');
 	layerList.innerHTML = '';
@@ -326,6 +328,34 @@ function deleteLayer(index, panelId) {
 	layerimage.style.display = 'none';
 	updateLayerList();
 
+}
+function seedChanged(){
+	const layerList = document.getElementById("layerList").children;
+	tempLayerList = Array.from(layerList)
+	for (var i = 0; i < tempLayerList.length; i++) {
+		if (tempLayerList[i].classList == "panel active") {
+			selectedLayer = tempLayerList[i].id;
+			break
+		}
+	}
+	seed = document.getElementById(selectedLayer + "Seed")
+
+	var currentValue = parseInt(seed.value, 10);
+	
+	if (currentValue > 4) {
+		seed.value = 1;
+	} else if (currentValue < 1) {
+		seed.value = 4;
+	} else {
+		seed.value = currentValue;
+	}
+
+		var inputEvent = new Event('input');
+		seed.dispatchEvent(inputEvent);
+		
+		cell = cellList[selectedLayer];
+		if (cell == null) return
+		editImage(cell);
 }
 function createLayer(name = "") {
 	beforeStarContainer = document.getElementById("beforeStarContainer");
@@ -374,6 +404,8 @@ function createLayer(name = "") {
 	if (panelDiv.id != 'Layer0') {
 		layerSquare.onclick = function () {
 		toggleAccordion(panelDiv.id);
+		seed = document.getElementById(panelDiv.id + "Seed");
+		seed.addEventListener('change', seedChanged);
 	};
 	}
 
@@ -444,10 +476,16 @@ function createLayer(name = "") {
 	imageContainer.addEventListener('mouseenter', handleMouseEnter);
 	imageContainer.addEventListener('mouseleave', handleMouseLeave);
 	handleWheelListener = event => handleWheel(event);
-
 	document.addEventListener('wheel',handleWheelListener, { passive: false });
+
+
+	imageContainer.addEventListener('touchmove', handleTouchMove);
+	imageContainer.addEventListener('touchend', handleTouchListener);
+	handleTouchListener = event => handleTouchStart(event);
+	document.addEventListener('touchstart', handleTouchListener, { passive: false });
 }
 function editImage(cell){
+	if (cell == null) return
 	layerid = cell.id.replace("P", "");
 	cell.classList.add("clickedcell");
 	if (cellList[layerid] != cell){
@@ -540,3 +578,39 @@ function deleteAllLayers(){
 	layer1.style.display = 'none';
 	layer2.style.display = 'none';
 	layer3.style.display = 'none';}
+
+let handleTouchListener;
+function handleTouchStart(event) {
+	if (isOverImage) {
+	  const startX = event.touches[0].clientX;
+	  document.addEventListener('touchmove', handleTouchMove, { passive: false });
+	  document.addEventListener('touchend', handleTouchEnd, { passive: false });
+  
+	  function handleTouchMove(event) {
+		const deltaX = event.touches[0].clientX - startX;
+		if (Math.abs(deltaX) > 10) { // Adjust threshold for swipe sensitivity
+		  const direction = deltaX > 0 ? 'right' : 'left';
+		  handleSwipe(direction);
+		  event.preventDefault();
+		  document.removeEventListener('touchmove', handleTouchMove);
+		}
+	  }
+  
+	  function handleTouchEnd() {
+		document.removeEventListener('touchmove', handleTouchMove);
+		document.removeEventListener('touchend', handleTouchEnd);
+	  }
+	}
+  }
+  
+  function handleSwipe(direction) {
+	// Update seed value based on swipe direction (left/right)
+	if (direction === 'left') {
+	  // Logic to decrease seed value
+	} else if (direction === 'right') {
+	  // Logic to increase seed value
+	}
+	cell = cellList[selectedLayer];
+	if (cell == null) return;
+	editImage(cell);
+  }

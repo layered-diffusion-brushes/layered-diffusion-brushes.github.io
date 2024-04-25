@@ -476,13 +476,9 @@ function createLayer(name = "") {
 	imageContainer.addEventListener('mouseenter', handleMouseEnter);
 	imageContainer.addEventListener('mouseleave', handleMouseLeave);
 	handleWheelListener = event => handleWheel(event);
+
+
 	document.addEventListener('wheel',handleWheelListener, { passive: false });
-
-
-	imageContainer.addEventListener('touchmove', handleTouchMove);
-	imageContainer.addEventListener('touchend', handleTouchListener);
-	handleTouchListener = event => handleTouchStart(event);
-	document.addEventListener('touchstart', handleTouchListener, { passive: false });
 }
 function editImage(cell){
 	if (cell == null) return
@@ -556,11 +552,19 @@ function deleteAllLayers(){
 	cellList = [];
 	alllayersCount = -1;
 	table1 = document.getElementById("Layer1Table");
-	table1backup = table1.cloneNode(true);
+	if (table1 != null) {
+		table1backup = table1.cloneNode(true);
+	}
+	
 	table2 = document.getElementById("Layer2Table");
-	table2backup = table2.cloneNode(true);
+	if (table2 != null) {
+		table2backup = table2.cloneNode(true);
+	}
+
 	table3 = document.getElementById("Layer3Table");
-	table3backup = table3.cloneNode(true);
+	if (table3 != null) {
+		table3backup = table3.cloneNode(true);
+	}
 
 	const layerList = document.getElementById('layerList');
 	layerList.innerHTML = '';
@@ -578,39 +582,3 @@ function deleteAllLayers(){
 	layer1.style.display = 'none';
 	layer2.style.display = 'none';
 	layer3.style.display = 'none';}
-
-let handleTouchListener;
-function handleTouchStart(event) {
-	if (isOverImage) {
-	  const startX = event.touches[0].clientX;
-	  document.addEventListener('touchmove', handleTouchMove, { passive: false });
-	  document.addEventListener('touchend', handleTouchEnd, { passive: false });
-  
-	  function handleTouchMove(event) {
-		const deltaX = event.touches[0].clientX - startX;
-		if (Math.abs(deltaX) > 10) { // Adjust threshold for swipe sensitivity
-		  const direction = deltaX > 0 ? 'right' : 'left';
-		  handleSwipe(direction);
-		  event.preventDefault();
-		  document.removeEventListener('touchmove', handleTouchMove);
-		}
-	  }
-  
-	  function handleTouchEnd() {
-		document.removeEventListener('touchmove', handleTouchMove);
-		document.removeEventListener('touchend', handleTouchEnd);
-	  }
-	}
-  }
-  
-  function handleSwipe(direction) {
-	// Update seed value based on swipe direction (left/right)
-	if (direction === 'left') {
-	  // Logic to decrease seed value
-	} else if (direction === 'right') {
-	  // Logic to increase seed value
-	}
-	cell = cellList[selectedLayer];
-	if (cell == null) return;
-	editImage(cell);
-  }

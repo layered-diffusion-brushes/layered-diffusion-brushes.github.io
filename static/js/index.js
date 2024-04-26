@@ -313,9 +313,6 @@ function handleWheel(event) {
 }
 
 function increaseNumberOnSwipe() {
-
-
-
 	imageElement = document.getElementById("image-container");
     let startX;
 
@@ -335,7 +332,8 @@ function increaseNumberOnSwipe() {
 			}
 		}
 		const endX = event.changedTouches[0].clientX;
-        const deltaX = endX - startX;
+        
+		const deltaX = endX - startX;
 		seed = document.getElementById(selectedLayer + "Seed")
 		var currentValue = parseInt(seed.value, 10);
 		var delta;
@@ -344,6 +342,9 @@ function increaseNumberOnSwipe() {
         }
 		else if (deltaX < -50) { // You can adjust this threshold as needed
 			delta = - 1;
+		}
+		else{
+			return
 		}
 		var newValue = currentValue + delta;
 			

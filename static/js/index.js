@@ -574,11 +574,6 @@ function editImage(cell){
 	orgImage = document.getElementById("image-container-gen-image");
 	image.src = "static/demo/" + imageName;
 	image.style.display = "block";
-	if (window.devicePixelRatio > 3){
-		orgImage.style.maxHeight = String((2.4/window.devicePixelRatio)*512)+ "px";
-		orgImage.style.width = String((2.4/window.devicePixelRatio)*512)+ "px";
-	}
-
 
 	// orgImage.style.maxHeight = String(100 * 512/screen.height)+ "px";
 	image.style.position = "absolute";

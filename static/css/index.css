@@ -428,3 +428,88 @@ td {
     margin-top: 20px !important;
   }
 }
+/* .container{
+  position: relative;
+}
+.container > img{
+  position: absolute;
+  top:0;
+  left:0;
+} */
+/* #image-contaier{
+  position: relative;
+  height: 512px;
+} */
+#image-container {
+  position: relative;
+}
+#image-container-gen-image{
+  min-width:512px;
+  max-height:512px;
+  width: auto;
+  height: auto;
+}
+#Layer1Image {
+  position: absolute;
+  max-height: 100%; /* Limit the image height to fit within the container */
+  width: auto;
+  top: 0; /* Align the top of the image with the top of the container */
+  left: 0; /* Start with the left edge aligned with the left of the container */
+  transform: translateX(200px); /* Move the image down by 39% of its own height */
+  transform-origin: left; /* Set the origin of the transform to the top edge */
+}
+#Layer2Image {
+  position: absolute;
+  max-height: 100%; /* Limit the image height to fit within the container */
+  width: auto;
+  top: 0; /* Align the top of the image with the top of the container */
+  left: 0; /* Start with the left edge aligned with the left of the container */
+  transform-origin: left; /* Set the origin of the transform to the top edge */
+}
+#Layer3Image {
+  position: absolute;
+  max-height: 100%; /* Limit the image height to fit within the container */
+  width: auto;
+  top: 0; /* Align the top of the image with the top of the container */
+  left: 0; /* Start with the left edge aligned with the left of the container */
+  transform: translateX(360px); /* Move the image down by 39% of its own height */
+  transform-origin: left; /* Set the origin of the transform to the top edge */
+}
+
+.popup {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.05); /* Semi-transparent white background */
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  backdrop-filter: blur(8px); /* Apply blur effect to the background */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.7s ease; /* Smooth transition for opacity change */
+  z-index: 100;
+}
+
+
+.popup.active {
+  opacity: 1;
+}
+
+.fa-long-arrow-alt-up {
+  margin-right: 10px;
+}
+
+/* Animation keyframes for flashing effect */
+/* @keyframes flash {
+  0%, 20%, 50%, 80%, 100% {
+      opacity: 0;
+  }
+  10%, 30%, 40%, 60%, 70% {
+      opacity: 1;
+  }
+} */

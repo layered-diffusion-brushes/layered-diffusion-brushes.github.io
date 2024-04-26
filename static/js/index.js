@@ -172,6 +172,8 @@ function toggleAccordion(sectionId) {
 			panel.style.maxHeight = null;
 			acc.classList.remove('regenerate-animation');
 		} else {
+			if (sectionId=="Layer1" && cellList[sectionId] == null){
+				showPopUp('selectAPromptPopUp');}
 			panel.style.maxHeight = panel.scrollHeight + "px";
 			acc.classList.add('regenerate-animation');
 			imageContainer = document.getElementById("image-container");
@@ -326,6 +328,18 @@ function deleteLayer(index, panelId) {
 	layerimage = document.getElementById(layerName+"Image");
 	layerimage.src = "";
 	layerimage.style.display = 'none';
+
+	table = document.getElementById(layerName + "Table");
+	if (layerName == "Layer1") {
+		table1backup = table.cloneNode(true);
+	}
+	else if (layerName == "Layer2") {
+		table2backup = table.cloneNode(true);
+	}
+	else if (layerName == "Layer3") {
+		table3backup = table.cloneNode(true);
+	}
+
 	updateLayerList();
 
 }
@@ -468,6 +482,8 @@ function createLayer(name = "") {
 		buttonElement.addEventListener("touchstart", handleLayer0Down);
 		buttonElement.addEventListener("mouseup", handleLayer0Up);
 		buttonElement.addEventListener("touchend", handleLayer0Up);
+		showPopUp("openLayer1PopUp");
+
 	}
 	if (layers.length > 2){
 		lastLayer = layers[layers.length - 3].id;
@@ -479,8 +495,14 @@ function createLayer(name = "") {
 
 
 	document.addEventListener('wheel',handleWheelListener, { passive: false });
+	
 }
+firstEdit = true;
 function editImage(cell){
+	if (firstEdit){
+		showPopUp('scrollPopup');
+		firstEdit = false;
+	}
 	if (cell == null) return
 	layerid = cell.id.replace("P", "");
 	cell.classList.add("clickedcell");
@@ -496,31 +518,18 @@ function editImage(cell){
 
 	seed  = document.getElementById(layerid + "Seed").value;
 	imageName = cell.innerText + seed + ".png";
-	if (layerid.startsWith('Layer1')) {
-		
-		offset =(100/512)*200;
-	}	
-	else if (layerid.startsWith('Layer2')) {
-
-		offset = 0;
-		
-	}
-	else if (layerid.startsWith('Layer3')) {
-		offset = (100/512)*360;
-	}
-	// image = document.createElement('img');
 	orgImage = document.getElementById("image-container-gen-image");
 	image.src = "static/demo/" + imageName;
 	image.style.display = "block";
 	image.style.position = "absolute";
-	// image.style.height = orgImage.style.height;
-	image.style.height = "inherit";
-	image.style.maxHeight = "-webkit-fill-available"
+	// image.style.height = "inherit";
+	// image.style.maxHeight = "-webkit-fill-available"
 	mask = document.getElementById("mask");
 	mask.style.display = "none";
 	// image.style.width ='auto'
-	image.style.top =  orgImage.offsetTop + "px";
-	image.style.left = offset + "%";
+	// image.style.top =  orgImage.offsetTop + "px";
+	// image.style.left = offset + "%";
+	
 }
 
 function createButtonPanel(text, id, layerSquare){
@@ -546,6 +555,7 @@ let table3backup
 function deleteAllLayers(){
 	canvasList = [];
 	layers = [];
+	firstEdit = true;
 	for (cell in cellList){
 		cellList[cell].classList.remove("clickedcell");
 	}
@@ -565,7 +575,8 @@ function deleteAllLayers(){
 	if (table3 != null) {
 		table3backup = table3.cloneNode(true);
 	}
-
+	mask = document.getElementById("mask");
+	mask.style.display = 'none';
 	const layerList = document.getElementById('layerList');
 	layerList.innerHTML = '';
 
@@ -582,3 +593,17 @@ function deleteAllLayers(){
 	layer1.style.display = 'none';
 	layer2.style.display = 'none';
 	layer3.style.display = 'none';}
+	function showPopUp(popupname){
+
+	const popup = document.getElementById(popupname);
+
+    // Show popup
+    setTimeout(function() {
+        popup.classList.add('active');
+    }, 1000);
+
+    // Stop flashing after 5 seconds
+    setTimeout(function() {
+        popup.classList.remove('active');
+    }, 7000); //
+}

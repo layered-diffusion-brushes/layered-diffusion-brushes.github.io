@@ -316,7 +316,7 @@ function increaseNumberOnSwipe() {
 
 
 
-	imageElement = document.getElementById("image-container-gen-image");
+	imageElement = document.getElementById("image-container");
     let startX;
 
     imageElement.addEventListener('touchstart', function(event) {

@@ -428,6 +428,22 @@ td {
     margin-top: 20px !important;
   }
 }
+/* #scrollPopup::after {
+  content: "scroll up or down"; 
+} */
+@media only screen and (max-width: 768px) {
+  #scrollPopup {
+    visibility: hidden !important; /* Change text for mobile devices */
+}
+  #scrollPopup::before {
+      content:  '\2194'"    Swipe left or right" !important; 
+      visibility: visible !important; 
+      left: 50% !important;
+      width: 200% !important;
+      padding: 7% !important;
+      /* margin-left: 50%; */
+    }
+}
 /* .container{
   position: relative;
 }
@@ -444,7 +460,7 @@ td {
   position: relative;
 }
 #image-container-gen-image{
-  min-width:512px;
+  max-width:512px;
   max-height:512px;
   width: auto;
   height: auto;

@@ -312,6 +312,58 @@ function handleWheel(event) {
     }
 }
 
+function increaseNumberOnSwipe() {
+
+
+
+	imageElement = document.getElementById("image-container-gen-image");
+    let startX;
+
+    imageElement.addEventListener('touchstart', function(event) {
+        startX = event.touches[0].clientX;
+    });
+
+    imageElement.addEventListener('touchend', function(event) {
+		clearTimeout(wheelTimeout);
+		const updateSeedValue = () => {
+		const layerList = document.getElementById("layerList").children;
+		tempLayerList = Array.from(layerList)
+		for (var i = 0; i < tempLayerList.length; i++) {
+			if (tempLayerList[i].classList == "panel active") {
+				selectedLayer = tempLayerList[i].id;
+				break
+			}
+		}
+		const endX = event.changedTouches[0].clientX;
+        const deltaX = endX - startX;
+		seed = document.getElementById(selectedLayer + "Seed")
+		var currentValue = parseInt(seed.value, 10);
+		var delta;
+        if (deltaX > 50) { // You can adjust this threshold as needed
+            delta = 1;
+        }
+		else if (deltaX < -50) { // You can adjust this threshold as needed
+			delta = - 1;
+		}
+		var newValue = currentValue + delta;
+			
+		if (newValue > 4) {
+			seed.value = 1;
+		} else if (newValue < 1) {
+			seed.value = 4;
+		} else {
+			seed.value = newValue;
+		}
+		var inputEvent = new Event('input');
+		seed.dispatchEvent(inputEvent);
+	}
+	wheelTimeout = setTimeout(updateSeedValue, 100); 
+	cell = cellList[selectedLayer];
+	if (cell == null) return
+	editImage(cell);});
+}
+
+    
 
 
 function updateLayerList() {
@@ -492,6 +544,7 @@ function createLayer(name = "") {
 	imageContainer.addEventListener('mouseenter', handleMouseEnter);
 	imageContainer.addEventListener('mouseleave', handleMouseLeave);
 	handleWheelListener = event => handleWheel(event);
+	increaseNumberOnSwipe();
 
 
 	document.addEventListener('wheel',handleWheelListener, { passive: false });
@@ -521,6 +574,13 @@ function editImage(cell){
 	orgImage = document.getElementById("image-container-gen-image");
 	image.src = "static/demo/" + imageName;
 	image.style.display = "block";
+	if (window.devicePixelRatio > 3){
+		orgImage.style.maxHeight = String((2.4/window.devicePixelRatio)*512)+ "px";
+		orgImage.style.width = String((2.4/window.devicePixelRatio)*512)+ "px";
+	}
+
+
+	// orgImage.style.maxHeight = String(100 * 512/screen.height)+ "px";
 	image.style.position = "absolute";
 	// image.style.height = "inherit";
 	// image.style.maxHeight = "-webkit-fill-available"

@@ -277,7 +277,7 @@ input[type="range"] {max-width: 25em; min-width: 5em; width: auto; background: #
   transition: all 0.1s;
  }
 
-input[type="number"] {float: right; width: 8em;background: #ffffff;
+input[type="number"] {width: 6.5em;background: #ffffff;
   border: none;
   padding: 10px 20px;
   font-size: 14px;
@@ -388,6 +388,7 @@ td {
   margin-left: 10px;
   width: 33%;
   text-align: center;
+  height:40px;
   
 }
 
@@ -489,8 +490,7 @@ td {
   max-height: 100%; 
   width: auto;
   top: 0; 
-  left: 0; 
-  transform: calc(360 / 512 * 100%);
+  left: calc(360 / 512 * 100%); 
   flex: 1;
 }
 

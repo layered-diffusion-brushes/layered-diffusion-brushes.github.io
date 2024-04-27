@@ -439,9 +439,10 @@ td {
       content:  '\2194'"    Swipe left or right" !important; 
       visibility: visible !important; 
       /* left: 100% !important; */
-      transform: translate(50%, 0%) !important;
+      transform: translate(25%, 0%) !important;
       border-radius: 8px !important;
-      padding: 20px;
+      padding: 20px !important;
+      white-space: nowrap; /* Prevent line breaks */
     }
 }
 /* .container{
@@ -495,7 +496,7 @@ td {
 
 .popup {
   position: absolute;
-  top: 75%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.05); /* Semi-transparent white background */

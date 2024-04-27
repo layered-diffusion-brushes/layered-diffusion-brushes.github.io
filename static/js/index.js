@@ -665,10 +665,10 @@ function deleteAllLayers(){
     // Show popup
     setTimeout(function() {
         popup.classList.add('active');
-    }, 1000);
+    }, 500);
 
     // Stop flashing after 5 seconds
     setTimeout(function() {
         popup.classList.remove('active');
-    }, 7000); //
+    }, 5000); //
 }

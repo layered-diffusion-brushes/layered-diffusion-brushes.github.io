@@ -438,10 +438,10 @@ td {
   #scrollPopup::before {
       content:  '\2194'"    Swipe left or right" !important; 
       visibility: visible !important; 
-      left: 50% !important;
-      width: 200% !important;
-      padding: 7% !important;
-      /* margin-left: 50%; */
+      /* left: 100% !important; */
+      transform: translate(50%, 0%) !important;
+      border-radius: 8px !important;
+      padding: 20px;
     }
 }
 /* .container{
@@ -489,8 +489,8 @@ td {
   width: auto;
   top: 0; 
   left: 0; 
-  transform: calc(360 / 512 * 100%)
-  flex:1;
+  transform: calc(360 / 512 * 100%);
+  flex: 1;
 }
 
 .popup {
@@ -509,12 +509,13 @@ td {
   backdrop-filter: blur(8px); /* Apply blur effect to the background */
   opacity: 0; /* Initially hidden */
   transition: opacity 0.7s ease; /* Smooth transition for opacity change */
-  z-index: 100;
+  z-index: -100;
 }
 
 
 .popup.active {
   opacity: 1;
+  z-index: 100;
 }
 
 .fa-long-arrow-alt-up {

@@ -37,7 +37,7 @@ layerThumbnailList = [];
 let alllayersCount = -1;
 var selectedLayer = "Layer0";
 var lastLayer = "Layer0";
-let displayImageList2 = [];
+// let displayImageList2 = [];
 var originalGenImage
 let canvasList = [];
 function addBackroundLayer() {
@@ -47,8 +47,15 @@ function createThumbnail(index, layerno) {
 	const layerThumbnail = document.createElement('div');
 	layerThumbnail.id = 'layerThumbnail'+index;
 	layerThumbnail.className = 'layerThumbnail';
-	const thumbnailContent = document.getElementById("image-container-gen-image");
-
+	let thumbnailContent2 = document.getElementById(index + "Image");
+	if (thumbnailContent2 ==null || index == "Layer0"){
+		thumbnailContent2 = document.getElementById("image-container-gen-image");
+	}
+	else if (thumbnailContent2.src == "") {
+		thumbnailContent2 = document.getElementById("image-container-gen-image");
+	}
+	
+	image2 = document.getElementById('image-container-gen-image')
 	// Create a temporary canvas for resizing the image
 	const canvas = document.createElement('canvas');
 	const context = canvas.getContext('2d');
@@ -59,11 +66,12 @@ function createThumbnail(index, layerno) {
 
 	// Create an image object with the thumbnail content
 	const image = new Image();
-	image.src = thumbnailContent.src;
+	image.src = thumbnailContent2.src;
 	// displayImageList[index] = image;
+	context.drawImage(image2,0,0, 50,50);
 
 	// Draw and resize the image on the canvas
-	context.drawImage(image, 0, 0, 50, 50);
+	context.drawImage(image, 0, (200*50/512), (160*50/512), 50);
 	// Set the layerThumbnail content to be the resized image
 	layerThumbnail.innerHTML = `<img src="${canvas.toDataURL()}" width="50" height="50" alt="Thumbnail">`;
 	layerThumbnailList[index] = layerThumbnail;
@@ -484,7 +492,7 @@ function createLayer(name = "") {
 	layerSquare.style.alignItems = 'center';
 	layerSquare.id = 'Layer' + layerno + "Square";
 	layerThumbnail = createThumbnail(panelDiv.id, layerno);
-	createDisplayImage(selectedLayer);
+	// createDisplayImage(selectedLayer);
 	panelDiv.style.marginBottom = 'auto';
 
 	const hideButton = createButtonPanel('<i id="eyeIcon" class="fa-regular fa-eye"></i>', 'hideLayer', layerSquare)
@@ -492,9 +500,9 @@ function createLayer(name = "") {
 	hideButton.style.paddingRight = '10px';
 
 	hideButton.onclick = function () {
-		if (hideButton.innerHTML === '<i id="eyeIcon" class="fa-regular fa-eye"></i>') {
-			createDisplayImage(panelDiv.id);
-		}
+		// if (hideButton.innerHTML === '<i id="eyeIcon" class="fa-regular fa-eye"></i>') {
+		// 	createDisplayImage(panelDiv.id);
+		// }
 		toggleAccordion(panelDiv.id);
 		hideLayer(panelDiv.id);
 		
@@ -566,6 +574,7 @@ function editImage(cell){
 		}
 		cell.classList.add("clickedcell");
 	}
+	createThumbnail(layerid, layerid);
 	cellList[layerid] = cell;
 	imageContainer = document.getElementById("image-container");
 	image = document.getElementById(layerid.substring(0, 6) + "Image");

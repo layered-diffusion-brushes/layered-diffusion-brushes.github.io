@@ -458,38 +458,39 @@ td {
 } */
 #image-container {
   position: relative;
+  display: flex;
 }
 #image-container-gen-image{
-  max-width:512px;
-  max-height:512px;
-  width: auto;
-  height: auto;
+  /* max-width:512px;
+  max-height:512px; */
+  /* width: auto;
+  height: auto; */
+  flex:1
 }
 #Layer1Image {
   position: absolute;
-  max-height: 100%; /* Limit the image height to fit within the container */
+  max-height: 100%;
   width: auto;
-  top: 0; /* Align the top of the image with the top of the container */
-  left: 0; /* Start with the left edge aligned with the left of the container */
-  transform: translateX(200px); /* Move the image down by 39% of its own height */
-  transform-origin: left; /* Set the origin of the transform to the top edge */
-}
+  top: 0; 
+  left:  calc(200 / 512 * 100%); 
+  flex:1;
+  }
 #Layer2Image {
   position: absolute;
-  max-height: 100%; /* Limit the image height to fit within the container */
+  max-height: 100%; 
   width: auto;
-  top: 0; /* Align the top of the image with the top of the container */
-  left: 0; /* Start with the left edge aligned with the left of the container */
-  transform-origin: left; /* Set the origin of the transform to the top edge */
+  top: 0; 
+  left: 0;
+  flex:1;
 }
 #Layer3Image {
   position: absolute;
-  max-height: 100%; /* Limit the image height to fit within the container */
+  max-height: 100%; 
   width: auto;
-  top: 0; /* Align the top of the image with the top of the container */
-  left: 0; /* Start with the left edge aligned with the left of the container */
-  transform: translateX(360px); /* Move the image down by 39% of its own height */
-  transform-origin: left; /* Set the origin of the transform to the top edge */
+  top: 0; 
+  left: 0; 
+  transform: calc(360 / 512 * 100%)
+  flex:1;
 }
 
 .popup {

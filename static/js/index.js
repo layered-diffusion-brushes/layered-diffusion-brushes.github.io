@@ -120,7 +120,7 @@ function createRegenParams(panel) {
 		else if (index == 'Layer3') {
 		table =table3backup;}
 	}
-	table.style.display = 'block';
+	table.style.display = 'flex';
 	container.appendChild(table);
 
 	// Append the main container to the body or another parent element

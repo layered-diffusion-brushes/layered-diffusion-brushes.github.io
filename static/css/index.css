@@ -429,6 +429,18 @@ td {
     margin-top: 20px !important;
   }
 }
+@media only screen and (max-width: 768px) {
+  #demoContainer {
+    display: flex !important;
+  }
+  #demoImageContainer {
+    display: flex !important;
+  }
+  #edit-container {
+    display: flex !important;
+    float:none !important;
+  }
+}
 /* #scrollPopup::after {
   content: "scroll up or down"; 
 } */
@@ -445,6 +457,14 @@ td {
       padding: 20px !important;
       white-space: nowrap; /* Prevent line breaks */
     }
+}
+@media only screen and (max-width: 768px) {
+  .tablesContainer {
+    flex-direction: column !important;
+  }
+  .panel{
+    max-height: 200%;
+  }
 }
 /* .container{
   position: relative;

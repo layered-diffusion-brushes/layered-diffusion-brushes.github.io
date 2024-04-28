@@ -284,8 +284,8 @@
       <h2 class="title is-3 has-text-centered">Try it yourself</h2>
       <div class="container has-text-justified">
 
-      <div class="box" id="democontainer" style="display: flex; flex-direction: row; width: 100%;">
-        <div class="box" id="demoImageCotainer" style="display: flex; flex-direction: column; width: 50%;">
+      <div class="box" id="democontainer" style="width: 100%; display:flex;">
+        <div class="box" id="demoImageCotainer" style="display: block; flex-direction: column; width: 50%;">
             <div id="image-container" class="container" style="vertical-align: middle; align-self:center; margin-top: 20px; position: relative;">
             <img src="static/images/original.png" alt="Photo of Paris in fall" id="image-container-gen-image">
             <img id = "mask", style="display:none">
@@ -307,7 +307,7 @@
            <p style="text-align: center ;color:white; margin-top: 10px;"> <b></b><i class="fa-duotone fa-square-terminal fa-lg" style="margin-right: 3px;"></i> input prompt:</b> <span style="margin-left: 5px;"> "photo of paris in fall"</span></p>
                   
           </div>
-        <div class="box" id="edit-container" style="display: flex; flex-direction: column; width: 50%; padding-left:0.3em;">
+        <div class="box" id="edit-container" style="display: inline-flex; flex-direction: column; float: inline-end; width: 49%; padding-left:0.3em;">
             <!-- <div class="box"> -->
             <div id="diffusionbrush-container" style="display: flex; flex-direction: row; width: 100%;">
             <button class="button-c" onclick="createLayer()", style="width: 50%; text-align: center;">
@@ -345,7 +345,7 @@
 
             <div id="beforeStarContainer" style="vertical-align: middle; text-align:center; margin-top: 50%">
             <p> Create a layer to start.</p></div>
-            <div id="Layer2Table" style="display:flex; flex-direction: row; width: 100%; display:none;">
+            <div id="Layer2Table" class="tablesContainer" style="display:flex; flex-direction: row; width: 100%; display:none;">
             <table class="promptTable" style="width: 100%; text-align: center; margin-left: 10px;">
               <tr>
                 <th colspan="3" style="color: white; width:75%;"><i class="fa-regular fa-message-plus fa-lg" style="margin-right: 15px;"></i>Edit Prompt</th>
@@ -375,7 +375,7 @@
             </table>
             </div>
 
-            <div id="Layer1Table" style="display:flex; flex-direction: row; width: 100%; display:none;">
+            <div id="Layer1Table" class="tablesContainer" style="display:flex; flex-direction: row; width: 100%; display:none;">
               <table class="promptTable" style="width: 100%; text-align: center; margin-left: 10px;">
                 <tr>
                   <th colspan="3" style="color: white; width:75%;"><i class="fa-regular fa-message-plus fa-lg" style="margin-right: 15px;"></i>Edit Prompt</th>
@@ -405,7 +405,7 @@
               </table>
               </div>
 
-              <div id="Layer3Table" style="display:flex; flex-direction: row; width: 100%; display:none;">
+              <div id="Layer3Table" class="tablesContainer" style="display:flex; flex-direction: row; width: 100%; display:none;">
                 <table class="promptTable" style="width: 100%; text-align: center; margin-left: 10px;">
                   <tr>
                     <th colspan="3" style="color: white; width:75%;"><i class="fa-regular fa-message-plus fa-lg" style="margin-right: 15px;"></i>Edit Prompt</th>

@@ -107,9 +107,9 @@ function createRegenParams(panel) {
 
 	index = panel.id;
 	// Create the main container div
-	const container = document.createElement('div');
-	container.className = 'box';
-	container.style = 'display: flex; flex-direction: column;';
+	// const container = document.createElement('div');
+	// container.className = 'box';
+	// container.style = 'display: flex; flex-direction: column;';
 
 	table = document.getElementById(index +"Table");
 	if (table == null) {
@@ -121,8 +121,8 @@ function createRegenParams(panel) {
 		table =table3backup;}
 	}
 	table.style.display = 'flex';
-	container.appendChild(table);
-
+	// container.appendChild(table);
+	container = table;
 	// Append the main container to the body or another parent element
 	panel.appendChild(container);
 

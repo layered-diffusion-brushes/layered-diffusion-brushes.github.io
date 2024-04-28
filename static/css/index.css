@@ -462,6 +462,9 @@ td {
   .tablesContainer {
     flex-direction: column !important;
   }
+  .promptTable{
+    width: 95% !important;
+  }
 }
 /* .container{
   position: relative;

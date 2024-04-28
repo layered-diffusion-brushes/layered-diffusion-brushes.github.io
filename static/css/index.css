@@ -462,9 +462,6 @@ td {
   .tablesContainer {
     flex-direction: column !important;
   }
-  .panel{
-    max-height: 200%;
-  }
 }
 /* .container{
   position: relative;

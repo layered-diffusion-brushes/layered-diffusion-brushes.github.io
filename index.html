@@ -281,9 +281,17 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3 has-text-centered">Try it yourself</h2>
+      <h2 class="title is-3 has-text-centered">
+        <div style="position: relative;">
+          <i class="fa-duotone fa-sparkles fa-fade fa-2xs" style=" margin-left: -1em; position: absolute; top: 50%; left: 50%; --fa-primary-color: #e5bb24; --fa-secondary-color: #e5bb24;"></i>
+          <i class="fa-duotone fa-layer-group fa-2xs" style="  margin-left: -1.2em; position: absolute; bottom: 0; left: 50%;"></i>
+          <i class="fa-duotone fa-paintbrush-fine fa-shake fa-xl" style=" margin-left: 1em;margin-bottom: 0.5em; "></i>
+      </div>
+      <br><i class="fa-duotone fa-sparkles"></i> 
+      Try it yourself
+         <i class="fa-duotone fa-sparkles"></i> </h2>
       <div class="container has-text-justified">
-
+        <p class="has-text-centered has-text-justified"> Create a layers and select a prompt to edit the image. <br> Move the mouse cursor over the image and use scroll wheel (or swipe your fingers on the image if you are usin a phone) to get a new edit. You may create up to 3 layers of edits.  </p><br>
       <div class="box" id="democontainer" style="width: 100%; display:flex;">
         <div class="box" id="demoImageCotainer" style="display: inline-grid; flex-direction: column; width: 50%;">
             <div id="image-container" class="container" style="vertical-align: middle; align-self:center; margin-top: 20px; position: relative;">
@@ -322,26 +330,7 @@
           <div class="popup" id="selectAPromptPopUp">
             <p style="color:white">Click on a prompt to edit</p>
         </div>
-            <!-- </div> -->
-            <!-- <div id = "help-container" style="display: flex; flex-direction: column; width: 100%; padding-left:0.3em;">
-            <p> 1. Start with creating a new layer. (you can create up to 3 layers in this demo)<br>
-              2. Click on the "Layer 1" and check out the edit mask (masks are pre-determined in this demo)<br>
-              3. Click on the desired edit prompt and see how the region will be edited.<br>
-              4. Move your mouse over the image and start scrolling your mouse (as you do with the wheel) to see different versions of the edit generated.<br>
-              5. Repeat steps 1 to 4 for different Layers.<br>
-              6. Click on the "Save" button to save your edits.
-            </p>
 
-            <div class="tutorial-container">
-              <p>1. Start with creating a new layer. (you can create up to 3 layers in this demo)</p>
-              <p>2. Click on the "Layer 1" and check out the edit mask (masks are pre-determined in this demo)</p>
-              <p>3. Click on the desired edit prompt and see how the region will be edited.</p>
-              <p>4. Move your mouse over the image and start scrolling your mouse (as you do with the wheel) to see different versions of the edit generated.</p>
-              <p>5. Repeat steps 1 to 4 for different Layers.</p>
-              <p>6. Click on the "Save" button to save your edits.</p>
-          </div>
-      
-          <button id="startTutorial" onclick=startTutorial()>Start Tutorial</button> -->
 
             <div id="beforeStarContainer" style="vertical-align: middle; text-align:center; margin-top: 50%">
             <p> Create a layer to start.</p></div>
@@ -441,7 +430,7 @@
 
         
     </div>
-
+    <p class="is-size-7"> (for speed, we use pre-generated images in this demo.)</p>
     
 
 

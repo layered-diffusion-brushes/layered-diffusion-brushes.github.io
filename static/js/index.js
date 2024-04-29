@@ -171,7 +171,7 @@ function handleLayer0Down() {
 	layer3.style.display = 'none'
 
 }
-function toggleAccordion(sectionId, hide=false) {
+function toggleAccordion(sectionId) {
 	var panel = document.getElementById(sectionId);
 	var acc = document.getElementById(sectionId + "Square");
 	if (panel.childNodes.length > 0) {
@@ -244,10 +244,8 @@ function toggleAccordion(sectionId, hide=false) {
 		mask.src = canvas.src;
 		mask.width = image.width;
 		mask.height = image.height;
-		
-		if (hide  == false){
-			mask.style.display = 'block';
-		}
+
+		mask.style.display = 'block';
 		mask.style.position = 'absolute';
 		mask.style.zIndex = '1';
 		mask.style.opacity = "0.5";
@@ -465,9 +463,8 @@ function deleteLayer(index, panelId) {
 		mask.width = image.width;
 		mask.height = image.height;
 		
-		if (hide  == false){
-			mask.style.display = 'block';
-		}
+		mask.style.display = 'block';
+
 		mask.style.position = 'absolute';
 		mask.style.zIndex = '1';
 		mask.style.opacity = "0.5";
@@ -574,7 +571,7 @@ function createLayer(name = "") {
 		// if (hideButton.innerHTML === '<i id="eyeIcon" class="fa-regular fa-eye"></i>') {
 		// 	createDisplayImage(panelDiv.id);
 		// }
-		toggleAccordion(panelDiv.id, hide=true);
+		toggleAccordion(panelDiv.id);
 		hideLayer(panelDiv.id);
 		
 	}

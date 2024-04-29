@@ -6,23 +6,23 @@
   <!-- Replace the content tag with appropriate information -->
   <meta name="description" content="Image Editor">
   <meta property="og:title" content="Layered Diffusion Brushes"/>
-  <meta property="og:description" content="Layered Diffusion Brushes"/>
+  <meta property="og:description" content="A diffusion model based image editor"/>
   <meta property="og:url" content="https://layered-diffusion-brushes.github.io/"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta property="og:image" content="static/image/brush.png" />
+  <meta property="og:image:width" content="400"/>
+  <meta property="og:image:height" content="400"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet">
     
 
 
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <meta name="twitter:title" content="Layered Diffusion Brushes">
+  <meta name="twitter:description" content="A diffusion model based image editor">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:image" content="static/images/brush.png">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="AI, diffusion models, image editor">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -83,7 +83,7 @@
                     </span>
 
                     <!-- Supplementary PDF link -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -91,7 +91,7 @@
                       </span>
                       <span>Video</span>
                     </a>
-                  </span>
+                  </span> -->
 
                   <!-- Github link -->
 
@@ -116,7 +116,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                <a href="https://layered-diffusion-brushes.github.io/" target="_blank"
                 class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                   <i class="fab fa-github"></i>
@@ -278,7 +278,7 @@
   </div>
 </section>
 
-<section class="hero is-small">
+<section class="hero is-small" id="demo">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3 has-text-centered">
@@ -287,11 +287,23 @@
           <i class="fa-duotone fa-layer-group fa-2xs" style="  margin-left: -1.2em; position: absolute; bottom: 0; left: 50%;"></i>
           <i class="fa-duotone fa-paintbrush-fine fa-shake fa-xl" style=" margin-left: 1em;margin-bottom: 0.5em; "></i>
       </div>
-      <br><i class="fa-duotone fa-sparkles"></i> 
+      <br>
+      <!-- <i class="fa-duotone fa-sparkles"></i>  -->
       Try it yourself
-         <i class="fa-duotone fa-sparkles"></i> </h2>
+         <!-- <i class="fa-duotone fa-sparkles"></i>  -->
+        </h2>
       <div class="container has-text-justified">
-        <p class="has-text-centered has-text-justified"> Create a layers and select a prompt to edit the image. <br> Move the mouse cursor over the image and use scroll wheel (or swipe your fingers on the image if you are usin a phone) to get a new edit. You may create up to 3 layers of edits.  </p><br>
+        <p class="has-text-centered has-text-justified is-size-6">
+          <ol>
+              <li>Create a new layer and select layer 1 from the menu on the right. (Layer 0 is the background)</li>
+              <li>Select a prompt to edit the image.</li>
+              <li>Move the mouse cursor over the image and use scroll wheel (or swipe your fingers on the image if on a phone) to chane the seed and get a new edit.</li>
+              <li>Create another layer for a new edit. In this demo, you may stack up to 3 layers of edits.</li>
+              <li>Try hiding, unhiding, or deleting layers.</li>
+              <li> You can toggle between the original image and edited image by holding Layer 0.</li>
+          </ol>
+      </p><br>
+      
       <div class="box" id="democontainer" style="width: 100%; display:flex;">
         <div class="box" id="demoImageCotainer" style="display: inline-grid; flex-direction: column; width: 50%;">
             <div id="image-container" class="container" style="vertical-align: middle; align-self:center; margin-top: 20px; position: relative;">

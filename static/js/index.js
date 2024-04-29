@@ -628,7 +628,7 @@ function updateThumbnail(index){
   else if (index == "Layer2"){
 	context.drawImage(image, 0, 0, 200*50/512, 50);}
 	else if (index == "Layer3"){
-		context.drawImage(image, 0, 360*50/512, 152*50/512, 50);}
+		context.drawImage(image, 360*50/512, 0, 152*50/512, 50);}
 	
             context.globalCompositeOperation = 'destination-in';
     context.drawImage(mask, 0, 0, 50, 50);

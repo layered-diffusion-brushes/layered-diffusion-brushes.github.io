@@ -68,10 +68,10 @@ function createThumbnail(index, layerno) {
 	const image = new Image();
 	image.src = thumbnailContent2.src;
 	// displayImageList[index] = image;
-	context.drawImage(image2,0,0, 50,50);
+	context.drawImage(image,0,0, 50,50);
 
 	// Draw and resize the image on the canvas
-	context.drawImage(image, 0, (200*50/512), (160*50/512), 50);
+	// context.drawImage(image, (200*50/512), 0, 50,50);
 	// Set the layerThumbnail content to be the resized image
 	layerThumbnail.innerHTML = `<img src="${canvas.toDataURL()}" width="50" height="50" alt="Thumbnail">`;
 	layerThumbnailList[index] = layerThumbnail;
@@ -317,6 +317,7 @@ function handleWheel(event) {
 			cell = cellList[selectedLayer];
 			if (cell == null) return
 			editImage(cell);
+			// layerthumbnail = createThumbnail(selectedLayer, selectedLayer);
     }
 }
 
@@ -574,7 +575,7 @@ function editImage(cell){
 		}
 		cell.classList.add("clickedcell");
 	}
-	createThumbnail(layerid, layerid);
+	
 	cellList[layerid] = cell;
 	imageContainer = document.getElementById("image-container");
 	image = document.getElementById(layerid.substring(0, 6) + "Image");
@@ -591,10 +592,49 @@ function editImage(cell){
 	// image.style.maxHeight = "-webkit-fill-available"
 	mask = document.getElementById("mask");
 	mask.style.display = "none";
+	updateThumbnail(layerid);
+	
 	// image.style.width ='auto'
 	// image.style.top =  orgImage.offsetTop + "px";
 	// image.style.left = offset + "%";
 	
+}
+function updateThumbnail(index){
+	layerThumbnail = document.getElementById('layerThumbnail'+index);
+	let thumbnailContent2 = document.getElementById(index + "Image");
+	if (thumbnailContent2 ==null || index == "Layer0"){
+		thumbnailContent2 = document.getElementById("image-container-gen-image");
+	}
+	else if (thumbnailContent2.src == "") {
+		thumbnailContent2 = document.getElementById("image-container-gen-image");
+	}
+	
+	image2 = document.getElementById('mask')
+	// Create a temporary canvas for resizing the image
+	const canvas = document.createElement('canvas');
+	const context = canvas.getContext('2d');
+
+	// Set the canvas dimensions to the desired thumbnail size
+	canvas.width = 50;
+	canvas.height = 50;
+
+	// Create an image object with the thumbnail content
+	const image = new Image();
+	image.src = thumbnailContent2.src;
+	// displayImageList[index] = image;
+	image.onload = function() {
+		if (index == "Layer1"){
+  context.drawImage(image, 200*50/512, 0, 160*50/512, 50);}
+  else if (index == "Layer2"){
+	context.drawImage(image, 0, 0, 200*50/512, 50);}
+	else if (index == "Layer3"){
+		context.drawImage(image, 0, 360*50/512, 152*50/512, 50);}
+	
+            context.globalCompositeOperation = 'destination-in';
+    context.drawImage(mask, 0, 0, 50, 50);
+         context.drawImage(image2, 0, 0, 50, 50);
+	layerThumbnail.innerHTML = `<img src="${canvas.toDataURL()}" width="50" height="50" alt="Thumbnail">`;
+	layerThumbnailList[index] = layerThumbnail;}
 }
 
 function createButtonPanel(text, id, layerSquare){

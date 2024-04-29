@@ -171,7 +171,7 @@ function handleLayer0Down() {
 	layer3.style.display = 'none'
 
 }
-function toggleAccordion(sectionId) {
+function toggleAccordion(sectionId, hide=false) {
 	var panel = document.getElementById(sectionId);
 	var acc = document.getElementById(sectionId + "Square");
 	if (panel.childNodes.length > 0) {
@@ -229,7 +229,31 @@ function toggleAccordion(sectionId) {
 
 		}
 
-	
+		imageContainer = document.getElementById("image-container");
+		if (selectedLayer == "Layer1"){
+			canvas = document.getElementById("canvas1");}
+		else if (selectedLayer == "Layer2"){
+			canvas = document.getElementById("canvas2");}
+		else if (selectedLayer == "Layer3"){
+			canvas = document.getElementById("canvas3");}
+		mask = document.getElementById("mask");
+
+		image = document.getElementById("image-container-gen-image");
+
+		imageContainer.insertBefore(mask, imageContainer.firstChild);
+		mask.src = canvas.src;
+		mask.width = image.width;
+		mask.height = image.height;
+		
+		if (hide  == false){
+			mask.style.display = 'block';
+		}
+		mask.style.position = 'absolute';
+		mask.style.zIndex = '1';
+		mask.style.opacity = "0.5";
+		mask.style.width = image.style.width;
+		mask.style.height = image.style.height;
+		
 
 }
 function handleLayer0Up(imageElement) {
@@ -404,6 +428,52 @@ function deleteLayer(index, panelId) {
 
 	updateLayerList();
 
+	const layerList = document.getElementById("layerList").children;
+	tempLayerList = Array.from(layerList)
+	for (var i = 0; i < tempLayerList.length; i++) {
+		if (tempLayerList[i].classList == "panel active") {
+			selectedLayer = tempLayerList[i].id;
+			selectLayerSqare = selectedLayer + "Square"
+			document.getElementById(selectLayerSqare).classList.add('regenerate-animation');
+			maskCheck = document.getElementById("useCostumeMask" + selectedLayer);
+			break
+		}
+
+	}
+	for (var i = 0; i < tempLayerList.length; i++) {
+		if (tempLayerList[i].classList == "panel active" && tempLayerList[i].id != selectedLayer) {
+			anime = document.getElementById(tempLayerList[i].id + 'Square')
+			anime.classList.remove('regenerate-animation');
+
+		};
+
+		}
+
+		imageContainer = document.getElementById("image-container");
+		if (selectedLayer == "Layer1"){
+			canvas = document.getElementById("canvas1");}
+		else if (selectedLayer == "Layer2"){
+			canvas = document.getElementById("canvas2");}
+		else if (selectedLayer == "Layer3"){
+			canvas = document.getElementById("canvas3");}
+		mask = document.getElementById("mask");
+
+		image = document.getElementById("image-container-gen-image");
+
+		imageContainer.insertBefore(mask, imageContainer.firstChild);
+		mask.src = canvas.src;
+		mask.width = image.width;
+		mask.height = image.height;
+		
+		if (hide  == false){
+			mask.style.display = 'block';
+		}
+		mask.style.position = 'absolute';
+		mask.style.zIndex = '1';
+		mask.style.opacity = "0.5";
+		mask.style.width = image.style.width;
+		mask.style.height = image.style.height;
+
 }
 function seedChanged(){
 	const layerList = document.getElementById("layerList").children;
@@ -504,7 +574,7 @@ function createLayer(name = "") {
 		// if (hideButton.innerHTML === '<i id="eyeIcon" class="fa-regular fa-eye"></i>') {
 		// 	createDisplayImage(panelDiv.id);
 		// }
-		toggleAccordion(panelDiv.id);
+		toggleAccordion(panelDiv.id, hide=true);
 		hideLayer(panelDiv.id);
 		
 	}

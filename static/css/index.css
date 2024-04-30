@@ -533,6 +533,7 @@ td {
   justify-content: center;
   text-align: center;
   backdrop-filter: blur(8px); /* Apply blur effect to the background */
+  -webkit-backdrop-filter: blur(8px);
   opacity: 0; /* Initially hidden */
   transition: opacity 0.7s ease; /* Smooth transition for opacity change */
   z-index: -100;

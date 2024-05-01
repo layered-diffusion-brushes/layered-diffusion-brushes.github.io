@@ -1,33 +1,31 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
 
-$(document).ready(function() {
-    // Check for click events on the navbar burger icon
+$(document).ready(function () {
 
-    var options = {
-			slidesToScroll: 1,
-			slidesToShow: 2,
-			loop: true,
-			infinite: false,
-			autoplay: true,
-			autoplaySpeed: 8000,
-    }
-	
-    var options2 = {
+	var options = {
+		slidesToScroll: 1,
+		slidesToShow: 2,
+		loop: true,
+		infinite: false,
+		autoplay: true,
+		autoplaySpeed: 8000,
+	}
+
+	var options2 = {
 		slidesToScroll: 1,
 		slidesToShow: 1,
 		loop: true,
 		infinite: true,
 		autoplay: true,
 		autoplaySpeed: 5000,
-}
+	}
 
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+	var carousels = bulmaCarousel.attach('.carousel', options);
 
 	var carousels2 = bulmaCarousel.attach('.carousel2', options2);
-	
-    bulmaSlider.attach();
+
+	bulmaSlider.attach();
 
 })
 
@@ -37,7 +35,6 @@ layerThumbnailList = [];
 let alllayersCount = -1;
 var selectedLayer = "Layer0";
 var lastLayer = "Layer0";
-// let displayImageList2 = [];
 var originalGenImage
 let canvasList = [];
 function addBackroundLayer() {
@@ -45,85 +42,48 @@ function addBackroundLayer() {
 }
 function createThumbnail(index, layerno) {
 	const layerThumbnail = document.createElement('div');
-	layerThumbnail.id = 'layerThumbnail'+index;
+	layerThumbnail.id = 'layerThumbnail' + index;
 	layerThumbnail.className = 'layerThumbnail';
 	let thumbnailContent2 = document.getElementById(index + "Image");
-	if (thumbnailContent2 ==null || index == "Layer0"){
+	if (thumbnailContent2 == null || index == "Layer0") {
 		thumbnailContent2 = document.getElementById("image-container-gen-image");
 	}
 	else if (thumbnailContent2.src == "") {
 		thumbnailContent2 = document.getElementById("image-container-gen-image");
 	}
-	
-	image2 = document.getElementById('image-container-gen-image')
-	// Create a temporary canvas for resizing the image
+
 	const canvas = document.createElement('canvas');
 	const context = canvas.getContext('2d');
 
-	// Set the canvas dimensions to the desired thumbnail size
 	canvas.width = 50;
 	canvas.height = 50;
-
-	// Create an image object with the thumbnail content
 	const image = new Image();
 	image.src = thumbnailContent2.src;
-	// displayImageList[index] = image;
-	context.drawImage(image,0,0, 50,50);
-
-	// Draw and resize the image on the canvas
-	// context.drawImage(image, (200*50/512), 0, 50,50);
-	// Set the layerThumbnail content to be the resized image
+	context.drawImage(image, 0, 0, 50, 50);
 	layerThumbnail.innerHTML = `<img src="${canvas.toDataURL()}" width="50" height="50" alt="Thumbnail">`;
 	layerThumbnailList[index] = layerThumbnail;
 	return layerThumbnail;
 }
 
-function createDisplayImage(index) {
-	const layerThumbnail = document.createElement('div');
-	const thumbnailContent = document.getElementById("image-container-gen-image");
 
-	// Create a temporary canvas for resizing the image
-	const canvas = document.createElement('canvas');
-	const context = canvas.getContext('2d');
-
-	// Set the canvas dimensions to the desired thumbnail size
-	canvas.width = thumbnailContent.width;
-	canvas.height = thumbnailContent.height;
-
-	// Create an image object with the thumbnail content
-	const image = new Image();
-	image.src = thumbnailContent.src;
-	// displayImageList[index] = image;
-
-	// Draw and resize the image on the canvas
-	context.drawImage(image, 0, 0);
-	// Set the layerThumbnail content to be the resized image
-	layerThumbnail.innerHTML = `<img src="${canvas.toDataURL()}">`;
-	// displayImageList2[index] = new Image();
-	displayImageList2[index]= canvas.toDataURL();
-	return layerThumbnail;
-}
 function createRegenParams(panel) {
 
 	index = panel.id;
-	// Create the main container div
-	// const container = document.createElement('div');
-	// container.className = 'box';
-	// container.style = 'display: flex; flex-direction: column;';
 
-	table = document.getElementById(index +"Table");
+	table = document.getElementById(index + "Table");
 	if (table == null) {
 		if (index == 'Layer1') {
-		table =table1backup;}
+			table = table1backup;
+		}
 		else if (index == 'Layer2') {
-		table =table2backup;}
+			table = table2backup;
+		}
 		else if (index == 'Layer3') {
-		table =table3backup;}
+			table = table3backup;
+		}
 	}
 	table.style.display = 'flex';
-	// container.appendChild(table);
 	container = table;
-	// Append the main container to the body or another parent element
 	panel.appendChild(container);
 
 }
@@ -149,8 +109,8 @@ function hideLayer(panelId) {
 			break
 		}
 	}
-	image = document.getElementById(panelId+"Image");
-	
+	image = document.getElementById(panelId + "Image");
+
 	if (button.innerHTML === '<i id="eyeIcon" class="fa-regular fa-eye-slash"></i>') {
 		image.style.display = 'none'
 
@@ -180,17 +140,21 @@ function toggleAccordion(sectionId) {
 			panel.style.maxHeight = null;
 			acc.classList.remove('regenerate-animation');
 		} else {
-			if (sectionId=="Layer1" && cellList[sectionId] == null){
-				showPopUp('selectAPromptPopUp');}
+			if (sectionId == "Layer1" && cellList[sectionId] == null) {
+				showPopUp('selectAPromptPopUp');
+			}
 			panel.style.maxHeight = panel.scrollHeight + "px";
 			acc.classList.add('regenerate-animation');
 			imageContainer = document.getElementById("image-container");
-			if (sectionId == "Layer1"){
-				canvas = document.getElementById("canvas1");}
-			else if (sectionId == "Layer2"){
-				canvas = document.getElementById("canvas2");}
-			else if (sectionId == "Layer3"){
-				canvas = document.getElementById("canvas3");}
+			if (sectionId == "Layer1") {
+				canvas = document.getElementById("canvas1");
+			}
+			else if (sectionId == "Layer2") {
+				canvas = document.getElementById("canvas2");
+			}
+			else if (sectionId == "Layer3") {
+				canvas = document.getElementById("canvas3");
+			}
 			mask = document.getElementById("mask");
 
 			image = document.getElementById("image-container-gen-image");
@@ -205,7 +169,7 @@ function toggleAccordion(sectionId) {
 			mask.style.opacity = "0.5";
 			mask.style.width = image.style.width;
 			mask.style.height = image.style.height;
-			
+
 		}
 	}
 	const layerList = document.getElementById("layerList").children;
@@ -215,7 +179,6 @@ function toggleAccordion(sectionId) {
 			selectedLayer = tempLayerList[i].id;
 			selectLayerSqare = selectedLayer + "Square"
 			document.getElementById(selectLayerSqare).classList.add('regenerate-animation');
-			maskCheck = document.getElementById("useCostumeMask" + selectedLayer);
 			break
 		}
 
@@ -227,31 +190,34 @@ function toggleAccordion(sectionId) {
 
 		};
 
-		}
+	}
 
-		imageContainer = document.getElementById("image-container");
-		if (selectedLayer == "Layer1"){
-			canvas = document.getElementById("canvas1");}
-		else if (selectedLayer == "Layer2"){
-			canvas = document.getElementById("canvas2");}
-		else if (selectedLayer == "Layer3"){
-			canvas = document.getElementById("canvas3");}
-		mask = document.getElementById("mask");
+	imageContainer = document.getElementById("image-container");
+	if (selectedLayer == "Layer1") {
+		canvas = document.getElementById("canvas1");
+	}
+	else if (selectedLayer == "Layer2") {
+		canvas = document.getElementById("canvas2");
+	}
+	else if (selectedLayer == "Layer3") {
+		canvas = document.getElementById("canvas3");
+	}
+	mask = document.getElementById("mask");
 
-		image = document.getElementById("image-container-gen-image");
+	image = document.getElementById("image-container-gen-image");
 
-		imageContainer.insertBefore(mask, imageContainer.firstChild);
-		mask.src = canvas.src;
-		mask.width = image.width;
-		mask.height = image.height;
+	imageContainer.insertBefore(mask, imageContainer.firstChild);
+	mask.src = canvas.src;
+	mask.width = image.width;
+	mask.height = image.height;
 
-		mask.style.display = 'block';
-		mask.style.position = 'absolute';
-		mask.style.zIndex = '1';
-		mask.style.opacity = "0.5";
-		mask.style.width = image.style.width;
-		mask.style.height = image.style.height;
-		
+	mask.style.display = 'block';
+	mask.style.position = 'absolute';
+	mask.style.zIndex = '1';
+	mask.style.opacity = "0.5";
+	mask.style.width = image.style.width;
+	mask.style.height = image.style.height;
+
 
 }
 function handleLayer0Up(imageElement) {
@@ -275,127 +241,123 @@ function setupScrollOnImage(canvas, layerid) {
 		return;
 	}
 
-	let seed = document.getElementById("regenSeed"+layerid);
+	let seed = document.getElementById("regenSeed" + layerid);
 
 
 	handleWheelListener = event => handleWheel(event, seed, layerid);
 
-	document.addEventListener('wheel',handleWheelListener, { passive: false });
-	// Add the mouse enter/leave event listeners to the image element
+	document.addEventListener('wheel', handleWheelListener, { passive: false });
 	canvas.addEventListener('mouseenter', handleMouseEnter);
 	canvas.addEventListener('mouseleave', handleMouseLeave);
 }
 let handleWheelListener;
 function handleMouseEnter() {
 	isOverImage = true;
-	// container = document.getElementById("image-container-2");
 	document.body.style.overflow = 'hidden';
 	document.addEventListener('wheel', handleWheelListener, { passive: false });
 }
 function handleMouseLeave() {
-isOverImage = false;
-
-// container = document.getElementById("image-container-2");
-document.body.style.overflow = 'auto';
-document.removeEventListener('wheel', handleWheelListener);
+	isOverImage = false;
+	document.body.style.overflow = 'auto';
+	document.removeEventListener('wheel', handleWheelListener);
 }
 let isOverImage = false;
 let wheelTimeout = null;
 cellList = []
 function handleWheel(event) {
-	
 
+	if (isOverImage) {
+		event.preventDefault();
 
-    if (isOverImage) {
-        event.preventDefault();
-		
 		clearTimeout(wheelTimeout);
 		const updateSeedValue = () => {
-		const layerList = document.getElementById("layerList").children;
-		tempLayerList = Array.from(layerList)
-		for (var i = 0; i < tempLayerList.length; i++) {
-			if (tempLayerList[i].classList == "panel active") {
-				selectedLayer = tempLayerList[i].id;
-				break
+			const layerList = document.getElementById("layerList").children;
+			tempLayerList = Array.from(layerList)
+			for (var i = 0; i < tempLayerList.length; i++) {
+				if (tempLayerList[i].classList == "panel active") {
+					selectedLayer = tempLayerList[i].id;
+					break
+				}
 			}
-		}
-		seed = document.getElementById(selectedLayer + "Seed")
-            var currentValue = parseInt(seed.value, 10);
+			seed = document.getElementById(selectedLayer + "Seed")
+			var currentValue = parseInt(seed.value, 10);
 
-            var delta = event.deltaY > 0 ? 1 : -1;
-            var newValue = currentValue + delta;
-			
-            if (newValue > 4) {
-                seed.value = 1;
-            } else if (newValue < 1) {
+			var delta = event.deltaY > 0 ? 1 : -1;
+			var newValue = currentValue + delta;
+
+			if (newValue > 4) {
+				seed.value = 1;
+			} else if (newValue < 1) {
 				seed.value = 4;
 			} else {
-                seed.value = newValue;
-            }
+				seed.value = newValue;
+			}
 
-            var inputEvent = new Event('input');
-            seed.dispatchEvent(inputEvent);}
-			wheelTimeout = setTimeout(updateSeedValue, 100); 
-			cell = cellList[selectedLayer];
-			if (cell == null) return
-			editImage(cell);
-			// layerthumbnail = createThumbnail(selectedLayer, selectedLayer);
-    }
+			var inputEvent = new Event('input');
+			seed.dispatchEvent(inputEvent);
+		}
+		wheelTimeout = setTimeout(updateSeedValue, 100);
+		cell = cellList[selectedLayer];
+		if (cell == null) return
+		editImage(cell);
+	}
 }
 
 function increaseNumberOnSwipe() {
 	imageElement = document.getElementById("image-container");
-    let startX;
+	let startX;
 
-    imageElement.addEventListener('touchstart', function(event) {
-        startX = event.touches[0].clientX;
-    });
+	imageElement.addEventListener('touchstart', function (event) {
+		event.preventDefault();
+		startX = event.touches[0].clientX;
+	});
 
-    imageElement.addEventListener('touchend', function(event) {
+	imageElement.addEventListener('touchend', function (event) {
 		clearTimeout(wheelTimeout);
 		const updateSeedValue = () => {
-		const layerList = document.getElementById("layerList").children;
-		tempLayerList = Array.from(layerList)
-		for (var i = 0; i < tempLayerList.length; i++) {
-			if (tempLayerList[i].classList == "panel active") {
-				selectedLayer = tempLayerList[i].id;
-				break
+			const layerList = document.getElementById("layerList").children;
+			tempLayerList = Array.from(layerList)
+			for (var i = 0; i < tempLayerList.length; i++) {
+				if (tempLayerList[i].classList == "panel active") {
+					selectedLayer = tempLayerList[i].id;
+					break
+				}
 			}
+			const endX = event.changedTouches[0].clientX;
+
+			const deltaX = endX - startX;
+			seed = document.getElementById(selectedLayer + "Seed")
+			var currentValue = parseInt(seed.value, 10);
+			var delta;
+			if (deltaX > 50) {
+				delta = 1;
+			}
+			else if (deltaX < -50) {
+				delta = - 1;
+			}
+			else {
+				return
+			}
+			var newValue = currentValue + delta;
+
+			if (newValue > 4) {
+				seed.value = 1;
+			} else if (newValue < 1) {
+				seed.value = 4;
+			} else {
+				seed.value = newValue;
+			}
+			var inputEvent = new Event('input');
+			seed.dispatchEvent(inputEvent);
 		}
-		const endX = event.changedTouches[0].clientX;
-        
-		const deltaX = endX - startX;
-		seed = document.getElementById(selectedLayer + "Seed")
-		var currentValue = parseInt(seed.value, 10);
-		var delta;
-        if (deltaX > 50) { // You can adjust this threshold as needed
-            delta = 1;
-        }
-		else if (deltaX < -50) { // You can adjust this threshold as needed
-			delta = - 1;
-		}
-		else{
-			return
-		}
-		var newValue = currentValue + delta;
-			
-		if (newValue > 4) {
-			seed.value = 1;
-		} else if (newValue < 1) {
-			seed.value = 4;
-		} else {
-			seed.value = newValue;
-		}
-		var inputEvent = new Event('input');
-		seed.dispatchEvent(inputEvent);
-	}
-	wheelTimeout = setTimeout(updateSeedValue, 100); 
-	cell = cellList[selectedLayer];
-	if (cell == null) return
-	editImage(cell);});
+		wheelTimeout = setTimeout(updateSeedValue, 100);
+		cell = cellList[selectedLayer];
+		if (cell == null) return
+		editImage(cell);
+	});
 }
 
-    
+
 
 
 function updateLayerList() {
@@ -409,7 +371,7 @@ function updateLayerList() {
 function deleteLayer(index, panelId) {
 	layerName = panelId.replace("Square", "");
 	layers.splice(index, 2);
-	layerimage = document.getElementById(layerName+"Image");
+	layerimage = document.getElementById(layerName + "Image");
 	layerimage.src = "";
 	layerimage.style.display = 'none';
 
@@ -433,7 +395,6 @@ function deleteLayer(index, panelId) {
 			selectedLayer = tempLayerList[i].id;
 			selectLayerSqare = selectedLayer + "Square"
 			document.getElementById(selectLayerSqare).classList.add('regenerate-animation');
-			maskCheck = document.getElementById("useCostumeMask" + selectedLayer);
 			break
 		}
 
@@ -445,34 +406,37 @@ function deleteLayer(index, panelId) {
 
 		};
 
-		}
+	}
 
-		imageContainer = document.getElementById("image-container");
-		if (selectedLayer == "Layer1"){
-			canvas = document.getElementById("canvas1");}
-		else if (selectedLayer == "Layer2"){
-			canvas = document.getElementById("canvas2");}
-		else if (selectedLayer == "Layer3"){
-			canvas = document.getElementById("canvas3");}
-		mask = document.getElementById("mask");
+	imageContainer = document.getElementById("image-container");
+	if (selectedLayer == "Layer1") {
+		canvas = document.getElementById("canvas1");
+	}
+	else if (selectedLayer == "Layer2") {
+		canvas = document.getElementById("canvas2");
+	}
+	else if (selectedLayer == "Layer3") {
+		canvas = document.getElementById("canvas3");
+	}
+	mask = document.getElementById("mask");
 
-		image = document.getElementById("image-container-gen-image");
+	image = document.getElementById("image-container-gen-image");
 
-		imageContainer.insertBefore(mask, imageContainer.firstChild);
-		mask.src = canvas.src;
-		mask.width = image.width;
-		mask.height = image.height;
-		
-		mask.style.display = 'block';
+	imageContainer.insertBefore(mask, imageContainer.firstChild);
+	mask.src = canvas.src;
+	mask.width = image.width;
+	mask.height = image.height;
 
-		mask.style.position = 'absolute';
-		mask.style.zIndex = '1';
-		mask.style.opacity = "0.5";
-		mask.style.width = image.style.width;
-		mask.style.height = image.style.height;
+	mask.style.display = 'block';
+
+	mask.style.position = 'absolute';
+	mask.style.zIndex = '1';
+	mask.style.opacity = "0.5";
+	mask.style.width = image.style.width;
+	mask.style.height = image.style.height;
 
 }
-function seedChanged(){
+function seedChanged() {
 	const layerList = document.getElementById("layerList").children;
 	tempLayerList = Array.from(layerList)
 	for (var i = 0; i < tempLayerList.length; i++) {
@@ -484,7 +448,7 @@ function seedChanged(){
 	seed = document.getElementById(selectedLayer + "Seed")
 
 	var currentValue = parseInt(seed.value, 10);
-	
+
 	if (currentValue > 4) {
 		seed.value = 1;
 	} else if (currentValue < 1) {
@@ -493,19 +457,18 @@ function seedChanged(){
 		seed.value = currentValue;
 	}
 
-		var inputEvent = new Event('input');
-		seed.dispatchEvent(inputEvent);
-		
-		cell = cellList[selectedLayer];
-		if (cell == null) return
-		editImage(cell);
+	var inputEvent = new Event('input');
+	seed.dispatchEvent(inputEvent);
+
+	cell = cellList[selectedLayer];
+	if (cell == null) return
+	editImage(cell);
 }
 function createLayer(name = "") {
 	beforeStarContainer = document.getElementById("beforeStarContainer");
 	beforeStarContainer.style.display = 'none'
 	const layerSquare = document.createElement("button");
 	const imageContainer = document.getElementById("image-container");
-	
 
 	layerSquare.className = "accordion";
 	layerSquare.className = "button-d"
@@ -516,9 +479,10 @@ function createLayer(name = "") {
 
 	alllayersCount += 1;
 	if (alllayersCount > 3) {
-		alert ("In this demo, we only support up to 3 layers.")
-		return}
-	
+		alert("In this demo, we only support up to 3 layers.")
+		return
+	}
+
 	if (alllayersCount == 0) {
 		addBackroundLayer();
 
@@ -546,10 +510,10 @@ function createLayer(name = "") {
 	panelDiv.id = "Layer" + layerno;
 	if (panelDiv.id != 'Layer0') {
 		layerSquare.onclick = function () {
-		toggleAccordion(panelDiv.id);
-		seed = document.getElementById(panelDiv.id + "Seed");
-		seed.addEventListener('change', seedChanged);
-	};
+			toggleAccordion(panelDiv.id);
+			seed = document.getElementById(panelDiv.id + "Seed");
+			seed.addEventListener('change', seedChanged);
+		};
 	}
 
 	layerSquare.style.width = '-webkit-fill-available';
@@ -560,7 +524,6 @@ function createLayer(name = "") {
 	layerSquare.style.alignItems = 'center';
 	layerSquare.id = 'Layer' + layerno + "Square";
 	layerThumbnail = createThumbnail(panelDiv.id, layerno);
-	// createDisplayImage(selectedLayer);
 	panelDiv.style.marginBottom = 'auto';
 
 	const hideButton = createButtonPanel('<i id="eyeIcon" class="fa-regular fa-eye"></i>', 'hideLayer', layerSquare)
@@ -568,12 +531,9 @@ function createLayer(name = "") {
 	hideButton.style.paddingRight = '10px';
 
 	hideButton.onclick = function () {
-		// if (hideButton.innerHTML === '<i id="eyeIcon" class="fa-regular fa-eye"></i>') {
-		// 	createDisplayImage(panelDiv.id);
-		// }
 		toggleAccordion(panelDiv.id);
 		hideLayer(panelDiv.id);
-		
+
 	}
 	const deleteButton = createButtonPanel('<i class="fa-duotone fa-trash aria-hidden="true">', 'deleteLayer', layerSquare)
 	deleteButton.onclick = function () {
@@ -581,13 +541,11 @@ function createLayer(name = "") {
 		deleteLayer(indexToDelete, layerSquare.id);
 	};
 
-
-	// layerSquare.appendChild(layerText);
 	wrapper = document.createElement('div');
 	if (layerSquare.id != 'Layer0Square') {
-	wrapper.appendChild(hideButton);
+		wrapper.appendChild(hideButton);
 	}
-	else{
+	else {
 		layerThumbnail.style.marginLeft = "35px";
 	}
 	wrapper.appendChild(layerThumbnail);
@@ -614,7 +572,7 @@ function createLayer(name = "") {
 		showPopUp("openLayer1PopUp");
 
 	}
-	if (layers.length > 2){
+	if (layers.length > 2) {
 		lastLayer = layers[layers.length - 3].id;
 	}
 	inputImage = document.getElementById("image-container-gen-image");
@@ -624,87 +582,77 @@ function createLayer(name = "") {
 	increaseNumberOnSwipe();
 
 
-	document.addEventListener('wheel',handleWheelListener, { passive: false });
-	
+	document.addEventListener('wheel', handleWheelListener, { passive: false });
+
 }
 firstEdit = true;
-function editImage(cell){
-	if (firstEdit){
+function editImage(cell) {
+	if (firstEdit) {
 		showPopUp('scrollPopup');
 		firstEdit = false;
 	}
 	if (cell == null) return
 	layerid = cell.id.replace("P", "");
 	cell.classList.add("clickedcell");
-	if (cellList[layerid] != cell){
-		if (cellList[layerid] != null){
-		cellList[layerid].classList.remove("clickedcell");
+	if (cellList[layerid] != cell) {
+		if (cellList[layerid] != null) {
+			cellList[layerid].classList.remove("clickedcell");
 		}
 		cell.classList.add("clickedcell");
 	}
-	
+
 	cellList[layerid] = cell;
 	imageContainer = document.getElementById("image-container");
 	image = document.getElementById(layerid.substring(0, 6) + "Image");
 
-	seed  = document.getElementById(layerid + "Seed").value;
+	seed = document.getElementById(layerid + "Seed").value;
 	imageName = cell.innerText + seed + ".png";
 	orgImage = document.getElementById("image-container-gen-image");
 	image.src = "static/demo/" + imageName;
 	image.style.display = "block";
-
-	// orgImage.style.maxHeight = String(100 * 512/screen.height)+ "px";
 	image.style.position = "absolute";
-	// image.style.height = "inherit";
-	// image.style.maxHeight = "-webkit-fill-available"
 	mask = document.getElementById("mask");
 	mask.style.display = "none";
 	updateThumbnail(layerid);
-	
-	// image.style.width ='auto'
-	// image.style.top =  orgImage.offsetTop + "px";
-	// image.style.left = offset + "%";
-	
 }
-function updateThumbnail(index){
-	layerThumbnail = document.getElementById('layerThumbnail'+index);
+function updateThumbnail(index) {
+	layerThumbnail = document.getElementById('layerThumbnail' + index);
 	let thumbnailContent2 = document.getElementById(index + "Image");
-	if (thumbnailContent2 ==null || index == "Layer0"){
+	if (thumbnailContent2 == null || index == "Layer0") {
 		thumbnailContent2 = document.getElementById("image-container-gen-image");
 	}
 	else if (thumbnailContent2.src == "") {
 		thumbnailContent2 = document.getElementById("image-container-gen-image");
 	}
-	
+
 	image2 = document.getElementById('mask')
-	// Create a temporary canvas for resizing the image
 	const canvas = document.createElement('canvas');
 	const context = canvas.getContext('2d');
-
-	// Set the canvas dimensions to the desired thumbnail size
 	canvas.width = 50;
 	canvas.height = 50;
 
-	// Create an image object with the thumbnail content
 	const image = new Image();
 	image.src = thumbnailContent2.src;
-	// displayImageList[index] = image;
-	image.onload = function() {
-		if (index == "Layer1"){
-  context.drawImage(image, 200*50/512, 0, 160*50/512, 50);}
-  else if (index == "Layer2"){
-	context.drawImage(image, 0, 0, 200*50/512, 50);}
-	else if (index == "Layer3"){
-		context.drawImage(image, 360*50/512, 0, 152*50/512, 50);}
-	
-            context.globalCompositeOperation = 'destination-in';
-    context.drawImage(mask, 0, 0, 50, 50);
-         context.drawImage(image2, 0, 0, 50, 50);
-	layerThumbnail.innerHTML = `<img src="${canvas.toDataURL()}" width="50" height="50" alt="Thumbnail">`;
-	layerThumbnailList[index] = layerThumbnail;}
+	image.onload = function () {
+		if (index == "Layer1") {
+			context.drawImage(image, 200 * 50 / 512, 0, 160 * 50 / 512, 50);
+		}
+		else if (index == "Layer2") {
+			context.drawImage(image, 0, 0, 200 * 50 / 512, 50);
+		}
+		else if (index == "Layer3") {
+			context.drawImage(image, 360 * 50 / 512, 0, 152 * 50 / 512, 50);
+		}
+
+		context.globalCompositeOperation = 'destination-in';
+		context.drawImage(mask, 0, 0, 50, 50);
+		context.drawImage(image2, 0, 0, 50, 50);
+		layerThumbnail.innerHTML = `<img src="${canvas.toDataURL()}" width="50" height="50" alt="Thumbnail">`;
+		layerThumbnailList[index] = layerThumbnail;
+	}
 }
 
-function createButtonPanel(text, id, layerSquare){
+function createButtonPanel(text, id, layerSquare) {
 	const deleteButton = document.createElement('div');
 	deleteButton.className = id;
 	deleteButton.innerHTML = text; // Bin icon
@@ -724,11 +672,11 @@ function createButtonPanel(text, id, layerSquare){
 let table1backup
 let table2backup
 let table3backup
-function deleteAllLayers(){
+function deleteAllLayers() {
 	canvasList = [];
 	layers = [];
 	firstEdit = true;
-	for (cell in cellList){
+	for (cell in cellList) {
 		cellList[cell].classList.remove("clickedcell");
 	}
 	cellList = [];
@@ -737,7 +685,7 @@ function deleteAllLayers(){
 	if (table1 != null) {
 		table1backup = table1.cloneNode(true);
 	}
-	
+
 	table2 = document.getElementById("Layer2Table");
 	if (table2 != null) {
 		table2backup = table2.cloneNode(true);
@@ -764,18 +712,19 @@ function deleteAllLayers(){
 	layer3.src = "";
 	layer1.style.display = 'none';
 	layer2.style.display = 'none';
-	layer3.style.display = 'none';}
-	function showPopUp(popupname){
+	layer3.style.display = 'none';
+}
+function showPopUp(popupname) {
 
 	const popup = document.getElementById(popupname);
 
-    // Show popup
-    setTimeout(function() {
-        popup.classList.add('active');
-    }, 500);
+	// Show popup
+	setTimeout(function () {
+		popup.classList.add('active');
+	}, 500);
 
-    // Stop flashing after 5 seconds
-    setTimeout(function() {
-        popup.classList.remove('active');
-    }, 5000); //
+	// Stop flashing after 5 seconds
+	setTimeout(function () {
+		popup.classList.remove('active');
+	}, 5000); //
 }

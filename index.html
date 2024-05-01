@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="A diffusion model-based image editor"/>
-  <meta property="og:title" content="Layered Diffusion Brushes"/>
-  <meta property="og:description" content="A diffusion model based image editor"/>
-  <meta property="og:url" content="https://layered-diffusion-brushes.github.io/"/>
+  <meta name="description" content="A diffusion model-based image editor" />
+  <meta property="og:title" content="Layered Diffusion Brushes" />
+  <meta property="og:description" content="A diffusion model based image editor" />
+  <meta property="og:url" content="https://layered-diffusion-brushes.github.io/" />
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/brush.png"/>
-  <meta property="og:image:width" content="400"/>
-  <meta property="og:image:height" content="400"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet">
-    
+  <meta property="og:image" content="static/image/brush.png" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="400" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css"
+    rel="stylesheet">
+
 
 
   <meta name="twitter:title" content="Layered Diffusion Brushes">
@@ -28,15 +31,13 @@
 
   <title>Layered Diffusion Brushes</title>
   <link rel="icon" type="image/x-icon" href="static/images/brush.ico">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -46,6 +47,7 @@
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
 </head>
+
 <body>
 
 
@@ -54,36 +56,36 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            
+
             <p class="is-size-2 publication-title"> Streamlining Image Editing with </p>
             <h1 class="title is-1 publication-title">Layered Diffusion Brushes</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
                 <a href="https://www.cs.ubc.ca/~peymang/" target="_blank">Peyman Gholami</a>,</span>
-                <span class="author-block">
-                  <a href="https://www.robertxiao.ca/" target="_blank">Robert Xiao</a></span>
-                  </div>
+              <span class="author-block">
+                <a href="https://www.robertxiao.ca/" target="_blank">Robert Xiao</a></span>
+            </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">University of British Columbia</span>
-                  </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">University of British Columbia</span>
+            </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
                     </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
 
-                    <!-- Supplementary PDF link -->
-                    <!-- <span class="link-block">
+                <!-- Supplementary PDF link -->
+                <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -93,325 +95,355 @@
                     </a>
                   </span> -->
 
-                  <!-- Github link -->
+                <!-- Github link -->
 
 
                 <!-- ArXiv abstract Link -->
                 <span class="link-block">
-                  <a href="#demo"
-                  class=" button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fa fa-paint-brush"></i>
-                  </span>
-                  <span>Demo</span>
-                </a>
-              </span>
+                  <a href="#demo" class=" button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fa fa-paint-brush"></i>
+                    </span>
+                    <span>Demo</span>
+                  </a>
+                </span>
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://layered-diffusion-brushes.github.io/" target="_blank"
-                class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                  <i class="fab fa-github"></i>
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
                 </span>
-                <span>Code (coming soon)</span>
-              </a>
-            </span>
+                <span class="link-block">
+                  <a href="https://layered-diffusion-brushes.github.io/" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="150%">
-        <!-- Your video here -->
-        <source src="static/videos/Layered_diffusion_brush_teaser.mp4"
-        type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        Our method enables real-time layer-based editing of images using latent diffusion models. 
-
-</h2>
-<p class=" has-text-centered" style="margin-top: -2%;" ></h3>*Videos in this page are playing at normal speed, not increased. 
-</p>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Denoising diffusion models have recently gained prominence as powerful tools for a variety of image generation and manipulation tasks. Building on this, we propose a novel tool for real-time editing of images that provides users with fine-grained region-targeted supervision in addition to existing prompt-based controls.
-            Our novel editing technique, termed Layered Diffusion Brushes, leverages prompt-guided and region-targeted alteration of intermediate denoising steps, enabling precise modifications while maintaining the integrity and context of the input image.
-            We provide an editor based on Layered Diffusion Brushes modifications, which incorporates well-known image editing concepts such as layer masks, visibility toggles, and independent manipulation of layers—regardless of their order. Our system renders a single edit on a 512x512 image within 140 ms using a high-end consumer GPU, enabling real-time feedback and rapid exploration of candidate edits.
-            We validated our method and editing system through a user study involving both natural images (using inversion) and generated images, showcasing its usability and effectiveness compared to existing techniques such as InstructPix2Pix and Stable Diffusion Inpainting for refining images. Our approach demonstrates efficacy across a range of tasks, including object attribute adjustments, error correction, and sequential prompt-based object placement and manipulation, demonstrating its versatility and potential for enhancing creative workflows.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item">
-          <img src="static/images/layer0.png" alt="s" width="512px"/>
-          <h2 class="subtitle has-text-centered">
-            Layer 0 - input image
-          </h2>
-        </div>
-        <div class="item">
-          <video poster="" id="steve" autoplay controls muted loop playsinline width="512px">
-            <source src="static/videos/boat.mp4"
-                    type="video/mp4">
-          </video> 
-          <h2 class="subtitle has-text-centered">
-            Layer 1 with box-brush option
-          </h2> 
-        </div>
-        <div class="item">
-          <img src="static/images/layer1boat.png" alt="s" width="512px"/>
-          <h2 class="subtitle has-text-centered">
-            Layer 1 output - boat
-          </h2>
-        </div>
-        <div class="item">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline width="512px" >
-            <source src="static/videos/rocks.mp4"
-                    type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">
-            Layer 2 with mask-scroll option
-          </h2>
-        </div>
-        <div class="item">
-          <img src="static/images/layer2rocks.png" alt="s" width="512px"/>
-          <h2 class="subtitle has-text-centered">
-            Layer 2 output - rocks
-          </h2>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Image carousel -->
-<section class="hero is-small is-light ">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3 has-text-centered">Method</h2>
-      <div class="container has-text-justified">
-        <p>
-          Layered Diffusion Brushes utilize a Latent Diffusion Model-based approach for editing images. Our method is training-free and performs edits through making targeted adjustments to the intermediate latents of the input image during the diffusion process.
-
-        </p>
-        
-      <div class="item">
-        <img src="static/images/diagram.drawio.png" alt="MY ALT TEXT"/ style="margin-top: 5%; margin-bottom: 3%;">
-      </div>
-      <p> During the editing process, the algorithm combines an input new noisy latent 𝑆′  with the original latent from step 𝑛 using a mask 𝑚 and a strength control 𝛼. The denoising procedure then proceeds by applying the edit prompt over several steps. At a specific step 𝑡 (where 𝑡 is fixed as 𝑁 − 2), the original latent and the newly modified latent are merged with the intermediate latent from the previous layer using masking. The final edited image</p>
-</div>
-</div>
-</section>
-
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3 has-text-centered">Real-time performance</h2>
-      <div class="container has-text-justified">
-
-      <div class="item" style="margin-bottom: 3%;">
-        <video poster="" id="realtime" autoplay controls muted loop playsinline height="100%" >
-          <source src="static/videos/real-time4.mp4"
-                  type="video/mp4">
+  <!-- Teaser video-->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="150%">
+          <!-- Your video here -->
+          <source src="static/videos/Layered_diffusion_brush_teaser.mp4" type="video/mp4">
         </video>
-      </div>
-      <p>
-        Our method leverages a highly optimized pipeline combined with intermediate latent caching to achieve real-time performance. Using Layered Diffusion Brushes, a single edit on a 512x512 image can be rendered within 140 ms (up to 7 fps) on a high-end consumer GPU. This capability enables real-time feedback and rapid exploration of candidate edits.</p>
-      
-      </div>
-    </div>
-  </div>
-</section>
+        <h2 class="subtitle has-text-centered">
+          Our method enables real-time layer-based editing of images using latent diffusion models.
 
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3 has-text-centered">Layer-based image editing</h2>
-      <div class="container has-text-justified">
-        <p>
-          Layered Diffusion Brushes enables powerful image layering and independent editing within each layer. Our editor offers two modes of editing: box mode for brush dragging and custom mask mode for mask scrolling. </p>
-        
-      <div class="item">
-        <video poster="" id="layers" autoplay controls muted loop playsinline width="150%" style="margin-top: 3%; margin-bottom: 3%;" >
-          <source src="static/videos/layers2.mp4"
-                  type="video/mp4">
-        </video>
-        <p>Users can stack, hide, unhide, delete, and adjust the strength of layers independently, ensuring global consistency and flexibility in layer modifications regardless of order. This allows for precise and non-destructive editing across different layers.
-        </p>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero is-small" id="demo">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3 has-text-centered">
-        <div style="position: relative;">
-          <i class="fa-duotone fa-sparkles fa-fade fa-2xs" style=" margin-left: -1em; position: absolute; top: 50%; left: 50%; --fa-primary-color: #e5bb24; --fa-secondary-color: #e5bb24;"></i>
-          <i class="fa-duotone fa-layer-group fa-2xs" style=" margin-left: -1.2em; position: absolute; bottom: 0; left: 50%;"></i>
-          <i class="fa-duotone fa-paintbrush-fine fa-shake fa-xl" style="--fa-secondary-color: #9e5a16; --fa-secondary-opacity: 0.7; margin-left: 1em;margin-bottom: 0.5em; "></i>
-</div>   
-      <br> 
-      <!-- <i class="fa-duotone fa-sparkles"></i>  -->
-      Try it yourself
-         <!-- <i class="fa-duotone fa-sparkles"></i>  -->
         </h2>
-      <div class="container has-text-justified">
-        <p class="has-text-centered has-text-justified is-size-6">
-          <ol>
-              <li>Create a new layer and select layer 1 from the menu. (Layer 0 is the background)</li>
-              <li>Select a prompt to edit the image.</li>
-              <li>Move the mouse cursor over the image and use scroll wheel (or swipe your fingers on the image if on a phone) to change the seed and get a new edit.</li>
-              <li>Create another layer for a new edit. In this demo, you may stack up to 3 layers of edits.</li>
-              <li>Try hiding, unhiding, or deleting layers.</li>
-              <li> You can toggle between the original image and edited image by holding Layer 0.</li>
-          </ol>
-      </p><br>
-      
-      <div class="box" id="democontainer" style="width: 100%; display:flex;">
-        <div class="box" id="demoImageCotainer" style="display: inline-grid; flex-direction: column; width: 50%;">
-            <div id="image-container" class="container" style="vertical-align: middle; align-self:center; margin-top: 20px; position: relative;">
-            <img src="static/images/original.png" alt="Photo of Paris in fall" id="image-container-gen-image">
-            <img id = "mask", style="display:none">
-            <img id = "Layer1Image", style="display:none; position:absolute"> 
-            <img id = "Layer2Image", style="display:none; position:absolute;">
-            <img id = "Layer3Image", style="display:none; position:absolute;">
-          
-            <div class="popup" id="scrollPopup">
-              <i class="fa-duotone fa-arrows-up-down fa-2xl"></i>
-              <p>Scroll Up or Down</p>
+        <p class=" has-text-centered" style="margin-top: -2%;">
+          </h3>*Videos in this page are playing at normal speed, not increased.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser video -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Denoising diffusion models have recently gained prominence as powerful tools for a variety of image
+              generation and manipulation tasks. Building on this, we propose a novel tool for real-time editing of
+              images that provides users with fine-grained region-targeted supervision in addition to existing
+              prompt-based controls.
+              Our novel editing technique, termed Layered Diffusion Brushes, leverages prompt-guided and region-targeted
+              alteration of intermediate denoising steps, enabling precise modifications while maintaining the integrity
+              and context of the input image.
+              We provide an editor based on Layered Diffusion Brushes modifications, which incorporates well-known image
+              editing concepts such as layer masks, visibility toggles, and independent manipulation of
+              layers—regardless of their order. Our system renders a single edit on a 512x512 image within 140 ms using
+              a high-end consumer GPU, enabling real-time feedback and rapid exploration of candidate edits.
+              We validated our method and editing system through a user study involving both natural images (using
+              inversion) and generated images, showcasing its usability and effectiveness compared to existing
+              techniques such as InstructPix2Pix and Stable Diffusion Inpainting for refining images. Our approach
+              demonstrates efficacy across a range of tasks, including object attribute adjustments, error correction,
+              and sequential prompt-based object placement and manipulation, demonstrating its versatility and potential
+              for enhancing creative workflows.</p>
           </div>
-            <!-- <img id = "Layer1Image", src="static/demo/italy1.png"> 
-            <img id = "Layer2Image", style="display:none; position:absolute;">
-            <img id = "Layer3Image", style="display:none; position:absolute;"> -->
-          </div>
-          <img src="static/images/tower.png"  id="canvas1" style="display:none">
-          <img src="static/images/lake.png"  id="canvas2" style="display:none">
-          <img src="static/images/palm.png"  id="canvas3" style="display:none">
-           <p style="text-align: center ;color:white; margin-top: 10px;"> <b></b><i class="fa-duotone fa-square-terminal fa-lg" style="margin-right: 3px;"></i> input prompt:</b> <span style="margin-left: 5px;"> "photo of paris in fall"</span></p>
-                  
-          </div>
-        <div class="box" id="edit-container" style="display: inline-flex; flex-direction: column; float: inline-end; width: 49%; padding-left:0.3em;">
-            <!-- <div class="box"> -->
-            <div id="diffusionbrush-container" style="display: flex; flex-direction: row; width: 100%;">
-            <button class="button-c" onclick="createLayer()", style="width: 50%; text-align: center;">
-                <i class="fa-solid fa-layer-plus fa-lg" style="margin-right: 15px;"></i>Create New Layer</button>
-            <button class="button-c" onclick="deleteAllLayers()", style="width: 50%; text-align: center;">
-                <i class="fa-duotone fa-trash-undo fa-lg" style="margin-right: 15px;"></i>Reset</button>
-            </div>
-            <div id="layerList"></div>
-            <div class="popup" id="openLayer1PopUp">
-              <p style="color:white">Click on Layer 1 to select</p>
-          </div>
-          <div class="popup" id="selectAPromptPopUp">
-            <p style="color:white">Click on a prompt to edit</p>
         </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item">
+            <img src="static/images/layer0.png" alt="s" width="512px" />
+            <h2 class="subtitle has-text-centered">
+              Layer 0 - input image
+            </h2>
+          </div>
+          <div class="item">
+            <video poster="" id="steve" autoplay controls muted loop playsinline width="512px">
+              <source src="static/videos/boat.mp4" type="video/mp4">
+            </video>
+            <h2 class="subtitle has-text-centered">
+              Layer 1 with box-brush option
+            </h2>
+          </div>
+          <div class="item">
+            <img src="static/images/layer1boat.png" alt="s" width="512px" />
+            <h2 class="subtitle has-text-centered">
+              Layer 1 output - boat
+            </h2>
+          </div>
+          <div class="item">
+            <video poster="" id="chair-tp" autoplay controls muted loop playsinline width="512px">
+              <source src="static/videos/rocks.mp4" type="video/mp4">
+            </video>
+            <h2 class="subtitle has-text-centered">
+              Layer 2 with mask-scroll option
+            </h2>
+          </div>
+          <div class="item">
+            <img src="static/images/layer2rocks.png" alt="s" width="512px" />
+            <h2 class="subtitle has-text-centered">
+              Layer 2 output - rocks
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Image carousel -->
+  <section class="hero is-small is-light ">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+        <div class="container has-text-justified">
+          <p>
+            Layered Diffusion Brushes utilize a Latent Diffusion Model-based approach for editing images. Our method is
+            training-free and performs edits through making targeted adjustments to the intermediate latents of the
+            input image during the diffusion process.
+
+          </p>
+
+          <div class="item">
+            <img src="static/images/diagram.drawio.png" alt="MY ALT TEXT" / style="margin-top: 5%; margin-bottom: 3%;">
+          </div>
+          <p> During the editing process, the algorithm combines an input new noisy latent 𝑆′ with the original latent
+            from step 𝑛 using a mask 𝑚 and a strength control 𝛼. The denoising procedure then proceeds by applying
+            the edit prompt over several steps. At a specific step 𝑡 (where 𝑡 is fixed as 𝑁 − 2), the original latent
+            and the newly modified latent are merged with the intermediate latent from the previous layer using masking.
+            The final edited image</p>
+        </div>
+      </div>
+  </section>
 
 
-            <div id="beforeStarContainer" style="vertical-align: middle; text-align:center; margin-top: 50%">
-            <p> Create a layer to start.</p></div>
-            <div id="Layer2Table" class="tablesContainer" style="display:flex; flex-direction: row; width: 100%; display:none;">
-            <table class="promptTable" style="width: 100%; text-align: center; margin-left: 10px;">
-              <tr>
-                <th colspan="3" style="color: white; width:75%;"><i class="fa-regular fa-message-plus fa-lg" style="margin-right: 15px;"></i>Edit Prompt</th>
-                 </tr>
-              <tr style = "justify-content: space-between;">
-                <td style="vertical-align: middle;" id="Layer2P" onclick=editImage(this);>
-                  lake
-                </td>
-                <td style="vertical-align: middle;" id="Layer2P" onclick=editImage(this);>
-                  desert
-                </td>
-                <td style="vertical-align: middle;" id="Layer2P" onclick=editImage(this);>
-                  waterfall
-                </td>
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3 has-text-centered">Real-time performance</h2>
+        <div class="container has-text-justified">
 
-              </tr>
-            </table>
-          <table class="seedTable" style="width: 50%; text-align: center; margin-left: 10px;">
-              <tr style = "justify-content: space-between;">
-                <th colspan="1" style="color: white; width:100%;"><i class="fa-regular fa-seedling fa-lg" style="margin-right: 15px;"></i>Edit Seed</th>
-             
-                </tr>
-                <tr style = "justify-content: space-between;">
-                                  <td colspan="1" style="background: none; box-shadow: none; cursor: auto;">
-                  <input type="number" id="Layer2Seed" value="1" style="margin-top: -5px;" onkeyup=editImage();>
-                </td>
-            </table>
+          <div class="item" style="margin-bottom: 3%;">
+            <video poster="" id="realtime" autoplay controls muted loop playsinline height="100%">
+              <source src="static/videos/real-time4.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p>
+            Our method leverages a highly optimized pipeline combined with intermediate latent caching to achieve
+            real-time performance. Using Layered Diffusion Brushes, a single edit on a 512x512 image can be rendered
+            within 140 ms (up to 7 fps) on a high-end consumer GPU. This capability enables real-time feedback and rapid
+            exploration of candidate edits.</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3 has-text-centered">Layer-based image editing</h2>
+        <div class="container has-text-justified">
+          <p>
+            Layered Diffusion Brushes enables powerful image layering and independent editing within each layer. Our
+            editor offers two modes of editing: box mode for brush dragging and custom mask mode for mask scrolling.
+          </p>
+
+          <div class="item">
+            <video poster="" id="layers" autoplay controls muted loop playsinline width="150%"
+              style="margin-top: 3%; margin-bottom: 3%;">
+              <source src="static/videos/layers2.mp4" type="video/mp4">
+            </video>
+            <p>Users can stack, hide, unhide, delete, and adjust the strength of layers independently, ensuring global
+              consistency and flexibility in layer modifications regardless of order. This allows for precise and
+              non-destructive editing across different layers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small" id="demo">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3 has-text-centered">
+          <div style="position: relative;">
+            <i class="fa-duotone fa-sparkles fa-fade fa-2xs"
+              style=" margin-left: -1em; position: absolute; top: 50%; left: 50%; --fa-primary-color: #e5bb24; --fa-secondary-color: #e5bb24;"></i>
+            <i class="fa-duotone fa-layer-group fa-2xs"
+              style=" margin-left: -1.2em; position: absolute; bottom: 0; left: 50%;"></i>
+            <i class="fa-duotone fa-paintbrush-fine fa-shake fa-xl"
+              style="--fa-secondary-color: #9e5a16; --fa-secondary-opacity: 0.7; margin-left: 1em;margin-bottom: 0.5em; "></i>
+          </div>
+          <br>
+          Try it yourself
+        </h2>
+        <div class="container has-text-justified">
+          <p class="has-text-centered has-text-justified is-size-6">
+          <ol>
+            <li>Create a new layer and select layer 1 from the menu. (Layer 0 is the background)</li>
+            <li>Select a prompt to edit the image.</li>
+            <li>Move the mouse cursor over the image and use scroll wheel (or swipe your fingers on the image if on a
+              phone) to change the seed and get a new edit.</li>
+            <li>Create another layer for a new edit. In this demo, you may stack up to 3 layers of edits.</li>
+            <li>Try hiding, unhiding, or deleting layers.</li>
+            <li> You can toggle between the original image and edited image by holding Layer 0.</li>
+          </ol>
+          </p>
+          <br>
+
+          <div class="box" id="democontainer" style="width: 100%; display:flex;">
+            <div class="box" id="demoImageCotainer" style="display: inline-grid; flex-direction: column; width: 50%;">
+              <div id="image-container" class="container"
+                style="vertical-align: middle; align-self:center; margin-top: 20px; position: relative;">
+                <img src="static/images/original.png" alt="Photo of Paris in fall" id="image-container-gen-image">
+                <img id="mask" , style="display:none">
+                <img id="Layer1Image" , style="display:none; position:absolute">
+                <img id="Layer2Image" , style="display:none; position:absolute;">
+                <img id="Layer3Image" , style="display:none; position:absolute;">
+
+                <div class="popup" id="scrollPopup">
+                  <i class="fa-duotone fa-arrows-up-down fa-2xl"></i>
+                  <p>Scroll Up or Down</p>
+                </div>
+              </div>
+              <img src="static/images/tower.png" id="canvas1" style="display:none">
+              <img src="static/images/lake.png" id="canvas2" style="display:none">
+              <img src="static/images/palm.png" id="canvas3" style="display:none">
+              <p style="text-align: center ;color:white; margin-top: 10px;"> <b></b><i
+                  class="fa-duotone fa-square-terminal fa-lg" style="margin-right: 3px;"></i> input prompt:</b> <span
+                  style="margin-left: 5px;"> "photo of paris in fall"</span></p>
+
             </div>
-
-            <div id="Layer1Table" class="tablesContainer" style="display:flex; flex-direction: row; width: 100%; display:none;">
-              <table class="promptTable" style="width: 100%; text-align: center; margin-left: 10px;">
-                <tr>
-                  <th colspan="3" style="color: white; width:75%;"><i class="fa-regular fa-message-plus fa-lg" style="margin-right: 15px;"></i>Edit Prompt</th>
-                   </tr>
-                <tr style = "justify-content: space-between;">
-                  <td style="vertical-align: middle;" id="Layer1P" onclick=editImage(this);>
-                    japan
-                  </td>
-                  <td style="vertical-align: middle;" id="Layer1P" onclick=editImage(this);>
-                    italy
-                  </td>
-                  <td style="vertical-align: middle;" id="Layer1P" onclick=editImage(this);>
-                    egypt
-                  </td>
-  
-                </tr>
-              </table>
-            <table class="seedTable" style="width: 50%; text-align: center; margin-left: 10px;">
-                <tr style = "justify-content: space-between;">
-                  <th colspan="1" style="color: white; width:100%;"><i class="fa-regular fa-seedling fa-lg" style="margin-right: 15px;"></i>Edit Seed</th>
-               
-                  </tr>
-                  <tr style = "justify-content: space-between;">
-                                    <td colspan="1" style="background: none; box-shadow: none; cursor: auto;">
-                    <input type="number" id="Layer1Seed" value="1" style="margin-top: -5px;" onkeyup=editImage();>
-                  </td>
-              </table>
+            <div class="box" id="edit-container"
+              style="display: inline-flex; flex-direction: column; float: inline-end; width: 49%; padding-left:0.3em;">
+              <div id="diffusionbrush-container" style="display: flex; flex-direction: row; width: 100%;">
+                <button class="button-c" onclick="createLayer()" , style="width: 50%; text-align: center;">
+                  <i class="fa-solid fa-layer-plus fa-lg" style="margin-right: 15px;"></i>Create New Layer</button>
+                <button class="button-c" onclick="deleteAllLayers()" , style="width: 50%; text-align: center;">
+                  <i class="fa-duotone fa-trash-undo fa-lg" style="margin-right: 15px;"></i>Reset</button>
+              </div>
+              <div id="layerList"></div>
+              <div class="popup" id="openLayer1PopUp">
+                <p style="color:white">Click on Layer 1 to select</p>
+              </div>
+              <div class="popup" id="selectAPromptPopUp">
+                <p style="color:white">Click on a prompt to edit</p>
               </div>
 
-              <div id="Layer3Table" class="tablesContainer" style="display:flex; flex-direction: row; width: 100%; display:none;">
+
+              <div id="beforeStarContainer" style="vertical-align: middle; text-align:center; margin-top: 50%">
+                <p> Create a layer to start.</p>
+              </div>
+              <div id="Layer2Table" class="tablesContainer"
+                style="display:flex; flex-direction: row; width: 100%; display:none;">
                 <table class="promptTable" style="width: 100%; text-align: center; margin-left: 10px;">
                   <tr>
-                    <th colspan="3" style="color: white; width:75%;"><i class="fa-regular fa-message-plus fa-lg" style="margin-right: 15px;"></i>Edit Prompt</th>
-                     </tr>
-                  <tr style = "justify-content: space-between;">
+                    <th colspan="3" style="color: white; width:75%;"><i class="fa-regular fa-message-plus fa-lg"
+                        style="margin-right: 15px;"></i>Edit Prompt</th>
+                  </tr>
+                  <tr style="justify-content: space-between;">
+                    <td style="vertical-align: middle;" id="Layer2P" onclick=editImage(this);>
+                      lake
+                    </td>
+                    <td style="vertical-align: middle;" id="Layer2P" onclick=editImage(this);>
+                      desert
+                    </td>
+                    <td style="vertical-align: middle;" id="Layer2P" onclick=editImage(this);>
+                      waterfall
+                    </td>
+                  </tr>
+                </table>
+                <table class="seedTable" style="width: 50%; text-align: center; margin-left: 10px;">
+                  <tr style="justify-content: space-between;">
+                    <th colspan="1" style="color: white; width:100%;"><i class="fa-regular fa-seedling fa-lg"
+                        style="margin-right: 15px;"></i>Edit Seed</th>
+                  </tr>
+                  <tr style="justify-content: space-between;">
+                    <td colspan="1" style="background: none; box-shadow: none; cursor: auto;">
+                      <input type="number" id="Layer2Seed" value="1" style="margin-top: -5px;" onkeyup=editImage();>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div id="Layer1Table" class="tablesContainer"
+                style="display:flex; flex-direction: row; width: 100%; display:none;">
+                <table class="promptTable" style="width: 100%; text-align: center; margin-left: 10px;">
+                  <tr>
+                    <th colspan="3" style="color: white; width:75%;"><i class="fa-regular fa-message-plus fa-lg"
+                        style="margin-right: 15px;"></i>Edit Prompt</th>
+                  </tr>
+                  <tr style="justify-content: space-between;">
+                    <td style="vertical-align: middle;" id="Layer1P" onclick=editImage(this);>
+                      japan
+                    </td>
+                    <td style="vertical-align: middle;" id="Layer1P" onclick=editImage(this);>
+                      italy
+                    </td>
+                    <td style="vertical-align: middle;" id="Layer1P" onclick=editImage(this);>
+                      egypt
+                    </td>
+                  </tr>
+                </table>
+                <table class="seedTable" style="width: 50%; text-align: center; margin-left: 10px;">
+                  <tr style="justify-content: space-between;">
+                    <th colspan="1" style="color: white; width:100%;"><i class="fa-regular fa-seedling fa-lg"
+                        style="margin-right: 15px;"></i>Edit Seed</th>
+                  </tr>
+                  <tr style="justify-content: space-between;">
+                    <td colspan="1" style="background: none; box-shadow: none; cursor: auto;">
+                      <input type="number" id="Layer1Seed" value="1" style="margin-top: -5px;" onkeyup=editImage();>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <div id="Layer3Table" class="tablesContainer"
+                style="display:flex; flex-direction: row; width: 100%; display:none;">
+                <table class="promptTable" style="width: 100%; text-align: center; margin-left: 10px;">
+                  <tr>
+                    <th colspan="3" style="color: white; width:75%;"><i class="fa-regular fa-message-plus fa-lg"
+                        style="margin-right: 15px;"></i>Edit Prompt</th>
+                  </tr>
+                  <tr style="justify-content: space-between;">
                     <td style="vertical-align: middle;" id="Layer3P" onclick=editImage(this);>
                       palm tree
                     </td>
@@ -421,84 +453,36 @@
                     <td style="vertical-align: middle;" id="Layer3P" onclick=editImage(this);>
                       pine, snow
                     </td>
-    
+
                   </tr>
                 </table>
-              <table class="seedTable" style="width: 50%; text-align: center; margin-left: 10px;">
-                  <tr style = "justify-content: space-between;">
-                    <th colspan="1" style="color: white; width:100%;"><i class="fa-regular fa-seedling fa-lg" style="margin-right: 15px;"></i>Edit Seed</th>
-                 
-                    </tr>
-                    <tr style = "justify-content: space-between;">
-                                      <td colspan="1" style="background: none; box-shadow: none; cursor: auto;">
+                <table class="seedTable" style="width: 50%; text-align: center; margin-left: 10px;">
+                  <tr style="justify-content: space-between;">
+                    <th colspan="1" style="color: white; width:100%;"><i class="fa-regular fa-seedling fa-lg"
+                        style="margin-right: 15px;"></i>Edit Seed</th>
+
+                  </tr>
+                  <tr style="justify-content: space-between;">
+                    <td colspan="1" style="background: none; box-shadow: none; cursor: auto;">
                       <input type="number" id="Layer3Seed" value="1" style="margin-top: -5px;" onkeyup=editImage();>
                     </td>
                 </table>
-                </div>
-           
+              </div>
+
+            </div>
+            <div class="circle" , id="circle"></div>
+            <div class="circle_slider"></div>
           </div>
-        <div class="circle", id = "circle"></div>
-        <div class="circle_slider"></div>
+          <p class="is-size-7 has-text-centered"> (for speed, we use pre-generated images in this demo.)</p>
+        </div>
 
-        
-    </div>
-    <p class="is-size-7 has-text-centered"> (for speed, we use pre-generated images in this demo.)</p>
-    
-
-
-</div>
-
-</div>
-</section>
-
-
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3 has-text-centered">Key Features</h2>
-      <div id="results-carousel" class="carousel2 results-carousel">
-       <div class="item">
-
-        <video poster="" id="video2" autoplay controls muted loop height="400px">
-          <source src="static/videos/real-time2.mp4"
-            type="video/mp4">
-          </video>
-        <h2 class="subtitle has-text-centered">
-          Real-time editing <br> (rendering edits within 140 msec).
-        </h2>
       </div>
-      <div class="item">
-        <video poster="" id="video2" autoplay controls muted loop height="400px">
-          <source src="static/videos/Produce_2.mp4"
-            type="video/mp4">
-          </video>
-        <h2 class="subtitle has-text-centered">
-          Hide and unhide different layers. 
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         gauranteed global consistency.
-       </h2>
-     </div>
-     <div class="item">
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Layer-based editing regardless of order.
-      </h2>
     </div>
-  </div>
-</div>
-</div>
-</section> -->
-<!-- End image carousel -->
+  </section>
 
 
-
-
-<!-- Youtube video -->
-<!-- <section class="hero is-small is-light">
+  <!-- Youtube video -->
+  <!-- <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3 has-text-centered">Video Presentation</h2>
@@ -513,7 +497,7 @@
     </div>
   </div>
 </section> -->
-<!-- End youtube video -->
+  <!-- End youtube video -->
 
 
 
@@ -525,38 +509,41 @@
 
 
 
-<!--BibTex citation -->
+  <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>BibTex Code Here</code></pre>
     </div>
-</section>
-<!--End BibTex citation -->
+  </section>
+  <!--End BibTex citation -->
 
 
   <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-size-7 ">
-        <div class="content">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-size-7 ">
+          <div class="content">
 
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> adopted from the <a href="https://nerfies.github.io" target="_blank">this</a> project page.
-            </a>
-          </p>
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a> adopted from the <a href="https://nerfies.github.io"
+                target="_blank">this</a> project page.
+              </a>
+            </p>
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+  <!-- Statcounter tracking code -->
 
-    <!-- End of Statcounter Code -->
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
-  </body>
-  </html>
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>

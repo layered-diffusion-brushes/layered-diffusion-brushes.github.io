@@ -98,7 +98,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="https://www.youtube.com/watch?v=D8ziZIDNaRs"
+                  <a href="https://www.youtube.com/watch?v=UwlNrfnN4Cw"
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                         <i class="fab fa-youtube"></i>
@@ -161,23 +161,9 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Denoising diffusion models have recently gained prominence as powerful tools for a variety of image
-              generation and manipulation tasks. Building on this, we propose a novel tool for real-time editing of
-              images that provides users with fine-grained region-targeted supervision in addition to existing
-              prompt-based controls.
-              Our novel editing technique, termed Layered Diffusion Brushes, leverages prompt-guided and region-targeted
-              alteration of intermediate denoising steps, enabling precise modifications while maintaining the integrity
-              and context of the input image.
-              We provide an editor based on Layered Diffusion Brushes modifications, which incorporates well-known image
-              editing concepts such as layer masks, visibility toggles, and independent manipulation of
-              layers—regardless of their order. Our system renders a single edit on a 512x512 image within 140 ms using
-              a high-end consumer GPU, enabling real-time feedback and rapid exploration of candidate edits.
-              We validated our method and editing system through a user study involving both natural images (using
-              inversion) and generated images, showcasing its usability and effectiveness compared to existing
-              techniques such as InstructPix2Pix and Stable Diffusion Inpainting for refining images. Our approach
-              demonstrates efficacy across a range of tasks, including object attribute adjustments, error correction,
-              and sequential prompt-based object placement and manipulation, demonstrating its versatility and potential
-              for enhancing creative workflows.</p>
+              Denoising diffusion models have emerged as powerful tools for image manipulation, yet interactive, localized editing workflows remain underdeveloped. 
+              We introduce Layered Diffusion Brushes (LDB), a novel training-free framework that enables interactive, layer-based editing using standard diffusion models. LDB defines each "layer" as a self-contained set of parameters guiding the generative process, enabling independent, non-destructive, and fine-grained prompt-guided edits, even in overlapping regions. LDB leverages a unique intermediate latent caching approach to reduce each edit to only a few denoising steps, achieving 140~ms per edit on consumer GPUs. An editor implementing LDB, incorporating familiar layer concepts, was evaluated via user study and quantitative metrics. Results demonstrate LDB's superior speed alongside comparable or improved image quality, background preservation, and edit fidelity relative to state-of-the-art methods across various sequential image manipulation tasks. The findings highlight LDB's ability to significantly enhance creative workflows by providing an intuitive and efficient approach to diffusion-based image editing and its potential for expansion into related subdomains, such as video editing.
+            </p>
           </div>
         </div>
       </div>
@@ -194,7 +180,7 @@
           <div class="column is-four-fifths">
             
             <div class="publication-video">
-              <iframe src="https://www.youtube.com/embed/D8ziZIDNaRs?si=fFiAy-4DQbYkQWsG" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/UwlNrfnN4Cw?si=wLAl0Cexvn9DGw21" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
           </div>
         </div>
